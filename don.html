@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Faire un don — Sonje Ayiti | Soutenir les communautés en Haïti</title>
+  <meta content="Faites un don sécurisé pour soutenir l'éducation, la santé et le développement économique en Haïti avec Sonje Ayiti. 100 % sécurisé via Zeffy, PayPal ou Venmo." name="description"/>
+  <link href="assets/sonje-ayiti-logo.jpg" rel="icon" type="image/jpeg"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="styles.css" rel="stylesheet"/>
+  <style>
+    /* STYLES DÉDIÉS DE LA PAGE DON (INSPIRATION FARM AFRICA & CHARTE SONJE AYITI) */
+    :root {
+      --don-green: #0C502C;
+      --don-green-light: #DCEFE3;
+      --don-green-hover: #083b20;
+      --don-orange: #F58220;
+      --don-orange-hover: #DF6F12;
+      --don-blue: #364273;
+      --don-bg: #FFFFFF;
+      --don-muted: #5B6675;
+      --don-border: #E2E8F0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body.donation-page-body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #FFFFFF;
+      color: #1A202C;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .don-page-layout {
+      display: grid;
+      grid-template-columns: 46% 54%;
+      min-height: 100vh;
+      background: #FFFFFF;
+    }
+
+    /* COLONNE GAUCHE : VISUEL IMPACT AUTHENTIQUE */
+    .don-visual-col {
+      position: relative;
+      background: #1C2333;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .don-visual-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: brightness(0.92);
+      transition: transform 12s ease;
+    }
+
+    .don-visual-col:hover .don-visual-img {
+      transform: scale(1.03);
+    }
+
+    .don-visual-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg, 
+        rgba(12, 28, 44, 0.45) 0%, 
+        rgba(12, 28, 44, 0.1) 40%, 
+        rgba(10, 24, 38, 0.88) 100%
+      );
+      pointer-events: none;
+    }
+
+    .don-visual-header {
+      position: relative;
+      z-index: 2;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .don-logo-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 10px 18px;
+      border-radius: 40px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+      transition: transform 0.25s ease;
+    }
+
+    .don-logo-badge:hover {
+      transform: translateY(-2px);
+    }
+
+    .don-logo-badge img {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+
+    .don-visual-footer {
+      position: relative;
+      z-index: 2;
+      padding: 40px;
+      color: #FFFFFF;
+    }
+
+    .don-visual-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #A3E4BE;
+      margin-bottom: 12px;
+    }
+
+    .don-visual-quote {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .don-visual-stats {
+      display: flex;
+      gap: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      padding-top: 20px;
+    }
+
+    .don-stat-item strong {
+      display: block;
+      font-size: 20px;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .don-stat-item span {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* COLONNE DROITE : FORMULAIRE DE DON (STYLE FARM AFRICA) */
+    .don-form-col {
+      padding: 48px 64px 64px 64px;
+      overflow-y: auto;
+      max-height: 100vh;
+      background: #FFFFFF;
+    }
+
+    .don-top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .don-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--don-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .don-back-link:hover {
+      color: var(--don-green);
+    }
+
+    .don-trust-pill {
+      font-size: 12px;
+      font-weight: 700;
+      color: #08763F;
+      background: #EBF8F0;
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .don-title-area {
+      margin-bottom: 28px;
+    }
+
+    .don-title-area h1 {
+      font-size: 40px;
+      font-weight: 800;
+      color: #122117;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .don-title-area p {
+      font-size: 15px;
+      color: var(--don-muted);
+      line-height: 1.6;
+    }
+
+    /* TOGGLE ONCE / MONTHLY (STYLE EXACT FARM AFRICA) */
+    .don-pill-toggle {
+      display: inline-flex;
+      background: #FFFFFF;
+      border: 1px solid #D5DDD7;
+      border-radius: 40px;
+      padding: 4px;
+      margin-bottom: 24px;
+      gap: 4px;
+    }
+
+    .don-pill-btn {
+      padding: 12px 32px;
+      border-radius: 32px;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: #334155;
+      transition: all 0.2s ease;
+    }
+
+    .don-pill-btn.active {
+      background: var(--don-green);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(12, 80, 44, 0.25);
+    }
+
+    /* LOCALISATION NOTICE */
+    .don-location-notice {
+      font-size: 13.5px;
+      color: #4A5568;
+      background: #F8FAF9;
+      border-left: 3px solid var(--don-green);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 32px;
+      line-height: 1.55;
+    }
+
+    .don-location-notice a {
+      color: var(--don-green);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    /* SECTION MONTANT DU DON */
+    .don-section-label {
+      font-size: 18px;
+      font-weight: 800;
+      color: #122117;
+      margin-bottom: 16px;
+      position: relative;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #E6ECE8;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .don-currency-select {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--don-green);
+      border: 1px solid #D5DDD7;
+      border-radius: 6px;
+      padding: 4px 8px;
+      background: #FFFFFF;
+      cursor: pointer;
+    }
+
+    /* GRILLE DES BOUTONS DE MONTANT (STYLE EXACT VERT FARM AFRICA) */
+    .don-amount-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 1.25fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .don-amt-btn {
+      padding: 16px 12px;
+      font-size: 18px;
+      font-weight: 800;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background: var(--don-green-light);
+      color: var(--don-green);
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .don-amt-btn:hover {
+      background: #CFE7D8;
+      transform: translateY(-2px);
+    }
+
+    .don-amt-btn.active {
+      background: var(--don-green);
+      color: #FFFFFF;
+      box-shadow: 0 6px 16px rgba(12, 80, 44, 0.28);
+    }
+
+    .don-amt-btn.other-btn {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* CHAMP MONTANT LIBRE (SI "AUTRE MONTANT" CHOISI) */
+    .don-custom-input-box {
+      margin-bottom: 18px;
+      display: none;
+    }
+
+    .don-custom-input-box.visible {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .don-input-currency-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .don-input-currency-prefix {
+      position: absolute;
+      left: 16px;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--don-green);
+    }
+
+    .don-custom-input-box input {
+      width: 100%;
+      padding: 14px 16px 14px 38px;
+      font-size: 18px;
+      font-weight: 800;
+      border: 2px solid var(--don-green);
+      border-radius: 8px;
+      background: #FFFFFF;
+      color: #122117;
+      outline: none;
+    }
+
+    /* ENCADRÉ IMPACT DYNAMIQUE */
+    .don-impact-callout {
+      background: #F0F8F3;
+      border: 1px solid #D1EAD9;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .don-impact-icon {
+      font-size: 24px;
+      line-height: 1;
+      color: var(--don-green);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .don-impact-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #1A3E2A;
+    }
+
+    .don-impact-text strong {
+      color: var(--don-green);
+      font-weight: 800;
+    }
+
+    /* AFFECTATION DE LA CAUSE */
+    .don-field-group {
+      margin-bottom: 26px;
+    }
+
+    .don-field-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #2D3748;
+      margin-bottom: 8px;
+    }
+
+    .don-select-styled {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid #CBD5E0;
+      border-radius: 8px;
+      background: #FFFFFF;
+      font-size: 14px;
+      font-weight: 600;
+      color: #2D3748;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .don-select-styled:focus {
+      border-color: var(--don-green);
+      box-shadow: 0 0 0 3px rgba(12, 80, 44, 0.12);
+    }
+
+    /* SÉLECTION DES PROCESSEURS DE PAIEMENT DU SITE */
+    .don-processors-group {
+      margin-bottom: 30px;
+    }
+
+    .don-processor-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .don-proc-card {
+      position: relative;
+      border: 2px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 16px 14px;
+      cursor: pointer;
+      background: #FFFFFF;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .don-proc-card:hover {
+      border-color: #B4CEBF;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .don-proc-card.active {
+      border-color: var(--don-green);
+      background: #F4FAF6;
+      box-shadow: 0 8px 20px rgba(12, 80, 44, 0.12);
+    }
+
+    .don-proc-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 3px 6px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      align-self: flex-start;
+    }
+
+    .don-proc-card.zeffy .don-proc-badge {
+      background: #E1F8EC;
+      color: #08763F;
+    }
+
+    .don-proc-card.paypal .don-proc-badge {
+      background: #E8F0FE;
+      color: #1A56DB;
+    }
+
+    .don-proc-card.venmo .don-proc-badge {
+      background: #EDF1FA;
+      color: #364273;
+    }
+
+    .don-proc-logo-area {
+      height: 38px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .don-proc-logo-area img {
+      max-height: 32px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .don-proc-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: #122117;
+      margin-bottom: 4px;
+    }
+
+    .don-proc-sub {
+      font-size: 11.5px;
+      color: var(--don-muted);
+      line-height: 1.4;
+    }
+
+    /* TIROIR VENMO SPÉCIAL (CODE QR DIRECT) */
+    .don-venmo-drawer {
+      display: none;
+      background: #F5F7FA;
+      border: 1px solid #D9E1EC;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 14px;
+      text-align: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .don-venmo-drawer.visible {
+      display: block;
+    }
+
+    .don-venmo-qr-wrap {
+      display: inline-block;
+      background: #FFFFFF;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      margin-bottom: 10px;
+    }
+
+    .don-venmo-qr-wrap img {
+      width: 120px;
+      height: 120px;
+      display: block;
+    }
+
+    .don-venmo-drawer p {
+      font-size: 13px;
+      color: #364273;
+      font-weight: 600;
+    }
+
+    /* DÉCLARATION REÇU FISCAL (STYLE GIFT AID DE FARM AFRICA) */
+    .don-gift-aid-box {
+      border: 1px solid #E2E8F0;
+      background: #FAFCFB;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .don-gift-aid-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #122117;
+      margin-bottom: 8px;
+    }
+
+    .don-gift-aid-desc {
+      font-size: 13px;
+      color: var(--don-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .don-radio-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 13.5px;
+      color: #2D3748;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .don-radio-option input[type="radio"] {
+      margin-top: 3px;
+      accent-color: var(--don-green);
+      cursor: pointer;
+    }
+
+    /* COORDONNÉES DU DONATEUR */
+    .don-donor-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #E2E8F0;
+    }
+
+    .don-donor-fields .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .don-input-styled {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 13.5px;
+      border: 1px solid #CBD5E0;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    .don-input-styled:focus {
+      border-color: var(--don-green);
+      box-shadow: 0 0 0 3px rgba(12, 80, 44, 0.12);
+    }
+
+    /* BOUTON D'ACTION PRINCIPAL */
+    .don-cta-wrap {
+      margin-bottom: 24px;
+    }
+
+    .don-main-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 18px 24px;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #FFFFFF;
+      background: var(--don-orange);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(245, 130, 32, 0.35);
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .don-main-cta:hover {
+      background: var(--don-orange-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(245, 130, 32, 0.45);
+    }
+
+    .don-main-cta:active {
+      transform: translateY(0);
+    }
+
+    /* BADGES DE RÉASSURANCE ET SÉCURITÉ */
+    .don-trust-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      font-size: 12px;
+      color: var(--don-muted);
+      padding-top: 16px;
+      border-top: 1px solid #EDF2F7;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+
+    .don-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE DESIGN MOBILE */
+    @media (max-width: 980px) {
+      .don-page-layout {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .don-visual-col {
+        min-height: 380px;
+      }
+
+      .don-form-col {
+        padding: 36px 24px;
+        max-height: none;
+      }
+
+      .don-amount-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .don-amount-grid .other-btn {
+        grid-column: span 2;
+      }
+
+      .don-processor-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="donation-page-body">
+
+<div class="don-page-layout">
+
+  <!-- COLONNE GAUCHE : PHOTO REPORTAGE HUMAINE DIGNITÉ EN HAÏTI -->
+  <aside aria-label="Témoignage et bénéficiaires de Sonje Ayiti" class="don-visual-col">
+    <img 
+      alt="Mère et enfant souriants dans le Nord d’Haïti — Bénéficiaires des programmes Sonje Ayiti" 
+      class="don-visual-img" 
+      src="assets/donation-haiti-portrait.jpg"
+    />
+    <div class="don-visual-gradient"></div>
+
+    <div class="don-visual-header">
+      <a class="don-logo-badge" href="index.html" title="Retour au site Sonje Ayiti">
+        <img alt="Sonje Ayiti — Remember Haiti" src="assets/sonje-ayiti-logo-transparent.png"/>
+      </a>
+      <a class="don-back-link" href="index.html" style="color: #FFFFFF; background: rgba(0,0,0,0.3); padding: 8px 14px; border-radius: 20px; backdrop-filter: blur(8px);">
+        ← Retour au site
+      </a>
+    </div>
+
+    <div class="don-visual-footer">
+      <span class="don-visual-tag">VOTRE IMPACT EN HAÏTI</span>
+      <h2 class="don-visual-quote">
+        « Chaque don donne à nos enfants et à nos mères les moyens d’apprendre, de se soigner et de vivre dans la dignité. »
+      </h2>
+      <div class="don-visual-stats">
+        <div class="don-stat-item">
+          <strong>100 %</strong>
+          <span>Dédié au terrain</span>
+        </div>
+        <div class="don-stat-item">
+          <strong>350+</strong>
+          <span>Bourses attribuées</span>
+        </div>
+        <div class="don-stat-item">
+          <strong>6 zones</strong>
+          <span>Nord &amp; Nord-Est</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- COLONNE DROITE : FORMULAIRE DE DON (STYLE FARM AFRICA) -->
+  <main class="don-form-col">
+    
+    <header class="don-top-nav">
+      <a class="don-back-link" href="index.html">
+        <svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour à l'accueil
+      </a>
+      <span class="don-trust-pill">
+        <svg aria-hidden="true" fill="none" height="15" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="15"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Don 100 % Sécurisé
+      </span>
+    </header>
+
+    <div class="don-title-area">
+      <h1>Faire un don</h1>
+      <p>Rejoignez ceux qui construisent l’autonomie durable des communautés haïtiennes.</p>
+    </div>
+
+    <!-- SÉLECTEUR FRÉQUENCE : DON PONCTUEL / MENSUEL -->
+    <div aria-label="Fréquence du don" class="don-pill-toggle" role="tablist">
+      <button aria-selected="true" class="don-pill-btn active" id="btn-freq-once" role="tab" type="button">Don unique</button>
+      <button aria-selected="false" class="don-pill-btn" id="btn-freq-monthly" role="tab" type="button">Don mensuel</button>
+    </div>
+
+    <!-- NOTE DE CONTEXTE PAIEMENT -->
+    <div class="don-location-notice">
+      <strong>Donateurs internationaux :</strong> Vous pouvez soutenir Sonje Ayiti depuis les <strong>États-Unis</strong>, le <strong>Canada</strong>, l’<strong>Europe</strong> ou <strong>Haïti</strong> avec nos 3 processeurs certifiés ci-dessous.
+    </div>
+
+    <!-- SECTION MONTANT DU DON -->
+    <section aria-labelledby="don-amount-heading">
+      <div class="don-section-label" id="don-amount-heading">
+        <span>Montant de votre don</span>
+        <select aria-label="Choisir la devise" class="don-currency-select" id="don-currency">
+          <option value="$" selected>$ USD (Dollar US)</option>
+          <option value="€">€ EUR (Euro)</option>
+          <option value="CAD $">CAD $ (Dollar Canadien)</option>
+          <option value="HTG">HTG (Gourde Haïtienne)</option>
+        </select>
+      </div>
+
+      <!-- BOUTONS PRÉDÉFINIS (STYLE VERT FARM AFRICA) -->
+      <div aria-label="Sélectionnez un montant" class="don-amount-grid" role="group">
+        <button class="don-amt-btn" data-amt="25" type="button">25 $</button>
+        <button class="don-amt-btn" data-amt="50" type="button">50 $</button>
+        <button class="don-amt-btn active" data-amt="100" type="button">100 $</button>
+        <button class="don-amt-btn" data-amt="250" type="button">250 $</button>
+        <button class="don-amt-btn other-btn" id="btn-amt-other" type="button">Autre montant</button>
+      </div>
+
+      <!-- CHAMP MONTANT LIBRE (DYNAMIQUE) -->
+      <div class="don-custom-input-box" id="custom-amount-box">
+        <div class="don-input-currency-wrapper">
+          <span class="don-input-currency-prefix" id="currency-prefix-label">$</span>
+          <input 
+            aria-label="Saisir un autre montant" 
+            id="custom-amount-input" 
+            min="5" 
+            placeholder="Indiquez le montant de votre choix" 
+            step="5" 
+            type="number"
+          />
+        </div>
+      </div>
+
+      <!-- IMPACT DYNAMIQUE DU MONTANT SÉLECTIONNÉ -->
+      <div class="don-impact-callout" id="don-impact-box">
+        <span aria-hidden="true" class="don-impact-icon">🌱</span>
+        <div class="don-impact-text" id="don-impact-message">
+          Avec <strong>100 $</strong>, vous assurez les fournitures scolaires, les livres et l'uniforme d'un élève pour une année complète d’apprentissage.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION AFFECTATION DU DON -->
+    <div class="don-field-group">
+      <label for="don-cause-select">Affectation de votre don :</label>
+      <select class="don-select-styled" id="don-cause-select">
+        <option value="general">Fonds général — Là où l'urgence et les besoins sont prioritaires</option>
+        <option value="education">Éducation &amp; Bourses d’études pour les jeunes</option>
+        <option value="sante">Santé communautaire &amp; Cliniques mobiles</option>
+        <option value="economie">Entrepreneuriat &amp; Autonomie des femmes</option>
+        <option value="agriculture">Agriculture, pépinières &amp; Sécurité alimentaire</option>
+      </select>
+    </div>
+
+    <!-- SECTION PROCESSEURS DE PAIEMENT DU SITE -->
+    <section aria-labelledby="don-processor-heading" class="don-processors-group">
+      <div class="don-section-label" id="don-processor-heading">
+        <span>Mode de paiement sécurisé</span>
+      </div>
+
+      <div class="don-processor-cards" role="radiogroup">
+        
+        <!-- PROCESSEUR 1 : ZEFFY (0% FRAIS) -->
+        <div aria-checked="true" class="don-proc-card zeffy active" data-processor="zeffy" role="radio" tabindex="0">
+          <span class="don-proc-badge">0 % DE FRAIS</span>
+          <div class="don-proc-logo-area">
+            <img alt="Zeffy — Plateforme de don 100% gratuite" src="assets/zeffy-logo.png"/>
+          </div>
+          <div class="don-proc-name">Don via Zeffy</div>
+          <div class="don-proc-sub">100 % de votre don va à Sonje Ayiti. Aucun frais bancaire.</div>
+        </div>
+
+        <!-- PROCESSEUR 2 : PAYPAL -->
+        <div aria-checked="false" class="don-proc-card paypal" data-processor="paypal" role="radio" tabindex="0">
+          <span class="don-proc-badge">CARTE &amp; PAYPAL</span>
+          <div class="don-proc-logo-area">
+            <img alt="PayPal" src="assets/paypal-logo.jpg"/>
+          </div>
+          <div class="don-proc-name">PayPal / Carte</div>
+          <div class="don-proc-sub">Paiement sécurisé par carte bancaire (Visa, MC) ou solde PayPal.</div>
+        </div>
+
+        <!-- PROCESSEUR 3 : VENMO -->
+        <div aria-checked="false" class="don-proc-card venmo" data-processor="venmo" role="radio" tabindex="0">
+          <span class="don-proc-badge">MOBILE USA</span>
+          <div class="don-proc-logo-area">
+            <img alt="Venmo" src="assets/venmo-qr.png" style="max-height: 36px;"/>
+          </div>
+          <div class="don-proc-name">Don via Venmo</div>
+          <div class="don-proc-sub">@Sonje-Ayiti ou scan direct du code QR avec votre smartphone.</div>
+        </div>
+
+      </div>
+
+      <!-- TIROIR VENMO AVEC QR CODE INTERACTIF -->
+      <div class="don-venmo-drawer" id="venmo-drawer">
+        <div class="don-venmo-qr-wrap">
+          <img alt="Code QR Venmo Sonje Ayiti" src="assets/venmo-qr.png"/>
+        </div>
+        <p>📱 Scannez ce code QR avec votre application <strong>Venmo</strong> ou envoyez directement votre don à <strong>@Sonje-Ayiti</strong>.</p>
+      </div>
+    </section>
+
+    <!-- SECTION DÉCLARATION & REÇU FISCAL (STYLE GIFT AID FARM AFRICA) -->
+    <section class="don-gift-aid-box">
+      <div class="don-gift-aid-title">Déduction fiscale &amp; Attestation de don</div>
+      <p class="don-gift-aid-desc">
+        Sonje Ayiti est une organisation à but non lucratif 501(c)(3) et association humanitaire reconnue. Vos dons sont éligibles aux réductions d'impôts selon la législation de votre pays de résidence fiscale.
+      </p>
+
+      <label class="don-radio-option">
+        <input checked name="gift-aid-choice" type="radio" value="yes"/>
+        <span><strong>Oui</strong>, je souhaite recevoir un reçu fiscal officiel par email pour ma déduction fiscale.</span>
+      </label>
+
+      <label class="don-radio-option">
+        <input name="gift-aid-choice" type="radio" value="no"/>
+        <span>Non, je ne demande pas de reçu fiscal pour le moment.</span>
+      </label>
+
+      <!-- COORDONNÉES DU DONATEUR (POUR LE REÇU) -->
+      <div class="don-donor-fields" id="donor-info-fields">
+        <div>
+          <input aria-label="Votre prénom" class="don-input-styled" id="donor-firstname" placeholder="Votre prénom" type="text"/>
+        </div>
+        <div>
+          <input aria-label="Votre nom" class="don-input-styled" id="donor-lastname" placeholder="Votre nom de famille" type="text"/>
+        </div>
+        <div class="full-width">
+          <input aria-label="Votre adresse email" class="don-input-styled" id="donor-email" placeholder="Votre adresse email (pour recevoir le reçu)" type="email"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOUTON D'ACTION PRINCIPAL DIRECTEUR -->
+    <div class="don-cta-wrap">
+      <a 
+        class="don-main-cta" 
+        href="https://www.zeffy.com/en-US/donation-form/sponsor-a-student-and-change-a-life" 
+        id="don-submit-btn" 
+        rel="noopener noreferrer" 
+        target="_blank"
+      >
+        <span id="don-submit-label">JE FAIS UN DON DE 100 $</span>
+        <svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" width="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- RÉASSURANCE & LABELS DE CONFIANCE -->
+    <footer class="don-trust-footer">
+      <div class="don-trust-item">
+        <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16"><rect height="11" rx="2" ry="2" width="18" x="3" y="11"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Paiement chiffré SSL 256 bits
+      </div>
+      <div class="don-trust-item">
+        <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+        Transparence financière
+      </div>
+      <div class="don-trust-item">
+        <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Reçu fiscal par email
+      </div>
+    </footer>
+
+  </main>
+
+</div>
+
+<script>
+  // GESTIONNAIRE DYNAMIQUE DU FORMULAIRE DE DON (STYLE FARM AFRICA)
+  (function() {
+    let currentFrequency = 'once';
+    let currentAmount = 100;
+    let currentCurrency = '$';
+    let currentProcessor = 'zeffy';
+
+    const impactMessages = {
+      25: "Avec <strong>25 {curr}</strong>, vous fournissez les cahiers, stylos et manuels scolaires indispensables à un enfant pour toute l'année.",
+      50: "Avec <strong>50 {curr}</strong>, vous financez la cantine scolaire quotidienne et les consultations médicales de base pour un enfant.",
+      100: "Avec <strong>100 {curr}</strong>, vous offrez une bourse d'études complète avec uniforme et accompagnement pédagogique pendant un trimestre.",
+      250: "Avec <strong>250 {curr}</strong>, vous financez le micro-capital d'amorçage pour permettre à une mère de famille de lancer une activité autonome pérenne.",
+      custom: "Chaque don, quel que soit son montant, permet de renforcer concrètement l'autonomie et l'avenir des communautés haïtiennes."
+    };
+
+    const processorLinks = {
+      zeffy: "https://www.zeffy.com/en-US/donation-form/sponsor-a-student-and-change-a-life",
+      paypal: "https://sonje-ayiti.org/donate/",
+      venmo: "https://sonje-ayiti.org/donate/"
+    };
+
+    const freqOnceBtn = document.getElementById('btn-freq-once');
+    const freqMonthlyBtn = document.getElementById('btn-freq-monthly');
+    const amountBtns = document.querySelectorAll('.don-amt-btn');
+    const customBox = document.getElementById('custom-amount-box');
+    const customInput = document.getElementById('custom-amount-input');
+    const currencySelect = document.getElementById('don-currency');
+    const currencyPrefix = document.getElementById('currency-prefix-label');
+    const impactText = document.getElementById('don-impact-message');
+    const processorCards = document.querySelectorAll('.don-proc-card');
+    const venmoDrawer = document.getElementById('venmo-drawer');
+    const submitBtn = document.getElementById('don-submit-btn');
+    const submitLabel = document.getElementById('don-submit-label');
+
+    function updateForm() {
+      // Met à jour les libellés des boutons de montants
+      amountBtns.forEach(btn => {
+        const amt = btn.dataset.amt;
+        if (amt) {
+          btn.textContent = amt + ' ' + currentCurrency;
+        }
+      });
+      currencyPrefix.textContent = currentCurrency;
+
+      // Met à jour le message d'impact
+      let msg = impactMessages[currentAmount] || impactMessages.custom;
+      msg = msg.replace(/{curr}/g, currentCurrency);
+      impactText.innerHTML = msg;
+
+      // Met à jour le texte du bouton CTA
+      const freqText = currentFrequency === 'monthly' ? ' PAR MOIS' : '';
+      submitLabel.textContent = `JE FAIS UN DON DE ${currentAmount} ${currentCurrency}${freqText}`;
+
+      // Met à jour le lien de destination
+      submitBtn.href = processorLinks[currentProcessor] || processorLinks.zeffy;
+    }
+
+    // Toggle Fréquence
+    freqOnceBtn.addEventListener('click', () => {
+      currentFrequency = 'once';
+      freqOnceBtn.classList.add('active');
+      freqOnceBtn.setAttribute('aria-selected', 'true');
+      freqMonthlyBtn.classList.remove('active');
+      freqMonthlyBtn.setAttribute('aria-selected', 'false');
+      updateForm();
+    });
+
+    freqMonthlyBtn.addEventListener('click', () => {
+      currentFrequency = 'monthly';
+      freqMonthlyBtn.classList.add('active');
+      freqMonthlyBtn.setAttribute('aria-selected', 'true');
+      freqOnceBtn.classList.remove('active');
+      freqOnceBtn.setAttribute('aria-selected', 'false');
+      updateForm();
+    });
+
+    // Sélection Montant prédéfini
+    amountBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        amountBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        if (btn.id === 'btn-amt-other') {
+          customBox.classList.add('visible');
+          customInput.focus();
+          if (customInput.value && Number(customInput.value) > 0) {
+            currentAmount = Number(customInput.value);
+          } else {
+            currentAmount = 'libre';
+          }
+        } else {
+          customBox.classList.remove('visible');
+          currentAmount = Number(btn.dataset.amt);
+        }
+        updateForm();
+      });
+    });
+
+    // Saisie montant personnalisé
+    customInput.addEventListener('input', () => {
+      const val = Number(customInput.value);
+      if (val > 0) {
+        currentAmount = val;
+      } else {
+        currentAmount = 'libre';
+      }
+      updateForm();
+    });
+
+    // Changement de Devise
+    currencySelect.addEventListener('change', (e) => {
+      currentCurrency = e.target.value;
+      updateForm();
+    });
+
+    // Choix du Processeur de Paiement
+    processorCards.forEach(card => {
+      card.addEventListener('click', () => {
+        processorCards.forEach(c => {
+          c.classList.remove('active');
+          c.setAttribute('aria-checked', 'false');
+        });
+        card.classList.add('active');
+        card.setAttribute('aria-checked', 'true');
+
+        currentProcessor = card.dataset.processor;
+
+        if (currentProcessor === 'venmo') {
+          venmoDrawer.classList.add('visible');
+        } else {
+          venmoDrawer.classList.remove('visible');
+        }
+        updateForm();
+      });
+    });
+
+    updateForm();
+  })();
+</script>
+
+</body>
+</html>
