@@ -5299,3 +5299,50 @@ body :is(.cinematic-kicker,.conviction-eyebrow,.sponsor-eyebrow,.territory-eyebr
 @media(hover:hover) and (pointer:fine){#programmes .album-controls{opacity:0}#programmes .album-controls button.carousel-arrow{pointer-events:none}#programmes .album-stage:hover .album-controls,#programmes .album-stage:focus-within .album-controls{opacity:1}#programmes .album-stage:hover .album-controls button,#programmes .album-stage:focus-within .album-controls button{pointer-events:auto}}
 @media(max-width:1000px){.programmes-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}}
 @media(max-width:600px){#programmes.programmes-catalogue{padding:44px 5%}.programmes-heading,.programmes-grid{grid-template-columns:1fr}.programmes-heading{gap:16px}#programmes .album-category-heading{min-height:0}#programmes .album-slide figcaption{min-height:150px}}
+
+/* Programmes : mêmes cartes photographiques que les dernières nouvelles. */
+#programmes .programmes-grid { gap: 18px; }
+#programmes .programme-news-card {
+  position: relative; min-width: 0; overflow: hidden;
+  border: 1px solid #e3e6df; border-radius: 0;
+  background: #123f2c; box-shadow: 0 12px 30px #123f2c16;
+}
+#programmes .programme-category-label {
+  position: absolute; z-index: 3; top: 20px; left: 20px; right: 20px;
+  min-height: 0; margin: 0; pointer-events: none;
+}
+#programmes .programme-category-label h3 {
+  font-size: 12px; line-height: 1.5; letter-spacing: .06em;
+  text-transform: uppercase; color: #fff; margin: 0; text-shadow: 0 1px 5px #0009;
+}
+#programmes .album-stage { height: 470px; }
+#programmes .album-slide { position: relative; height: 100%; }
+#programmes .album-slide > img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  aspect-ratio: auto; object-fit: cover; border-radius: 0;
+}
+#programmes .album-slide figcaption {
+  position: absolute; bottom: 0; left: 0; right: 0; min-height: 0;
+  display: flex; flex-direction: column; padding: 24px 20px;
+}
+#programmes .album-slide h4 { color: #fff; font-size: 20px; line-height: 1.35; margin: 0 0 12px; }
+#programmes .album-slide figcaption p { color: #e0eade; font-size: 13px; line-height: 1.65; margin: 0 0 18px; }
+#programmes .programme-card-link { border-top: 1px solid #ffffff2e; padding-top: 16px; text-decoration: none; }
+#programmes .programme-card-link .news-card-link-text { font-size: 12px; }
+#programmes .programme-card-link:hover .news-card-link-text { text-decoration: underline; text-underline-offset: 4px; }
+#programmes .album-controls {
+  top: 80px; bottom: auto; height: 36px; aspect-ratio: auto;
+  padding: 0 12px; justify-content: center;
+}
+@media(max-width:600px){#programmes .album-stage{height:430px}}
+
+/* Santé : texte légèrement abaissé et titre rapproché de sa description. */
+#programmes .programme-care-slide figcaption { padding-bottom: 14px; }
+
+/* Programmes : aucune commande de défilement affichée. */
+#programmes .album-controls { display: none !important; }
+
+/* Même espacement compact pour tous les carrousels des programmes. */
+#programmes .album-slide figcaption { gap: 0; }
+#programmes .album-slide h4 { margin-bottom: 2px; }
+#programmes .album-slide figcaption p { margin-top: 0; }

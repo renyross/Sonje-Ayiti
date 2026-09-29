@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Écrivez-nous — Sonje Ayiti | Contact & Bureaux en Haïti et aux USA</title>
+  <meta content="Contactez Sonje Ayiti : informations, questions sur le parrainage, partenariats ou dons. Retrouvez nos adresses à Limonade (Haïti) et Linden (USA)." name="description"/>
+  <link href="assets/sonje-ayiti-logo.jpg" rel="icon" type="image/jpeg"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="styles.css?v=20260929-contact-style" rel="stylesheet"/>
+  <style>
+    body.contact-standalone {
+      background: #f8faf9;
+      color: #1a202c;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .contact-page-header {
+      border-bottom: 1px solid #dce0d9;
+      padding: 16px 5%;
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .contact-page-header-inner {
+      max-width: 1250px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .contact-page-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .contact-page-logo img {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+    .contact-page-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .contact-page-nav a {
+      color: #123f2c;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color .2s;
+    }
+    .contact-page-nav a:hover {
+      color: #08763f;
+    }
+    .contact-page-nav .btn-back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 99px;
+      background: #f3f5f3;
+      color: #08763f;
+      font-weight: 700;
+    }
+    .contact-page-nav .btn-back-home:hover {
+      background: #e6eee7;
+    }
+    .contact-page-nav .btn-don {
+      background: #f58220;
+      color: #ffffff !important;
+      padding: 8px 18px;
+      border-radius: 99px;
+      font-weight: 700;
+      transition: background .2s, transform .15s;
+    }
+    .contact-page-nav .btn-don:hover {
+      background: #df6f12;
+      transform: translateY(-1px);
+    }
+    .contact-standalone-container {
+      padding: 70px 5% 90px;
+      max-width: 1250px;
+      margin: auto;
+    }
+
+    /* Section deux colonnes Formulaire + Carte & Adresses */
+    .contact-split-section {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .contact-form-card {
+      background: #ffffff;
+      border: 1px solid #dce0d9;
+      border-radius: 8px;
+      padding: 36px 36px 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    .contact-form-card h3 {
+      font-size: 26px;
+      color: #123f2c;
+      margin: 0 0 8px;
+      line-height: 1.25;
+    }
+    .contact-form-card p.form-lead {
+      color: #657263;
+      font-size: 15px;
+      margin: 0 0 28px;
+      line-height: 1.6;
+    }
+
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .contact-form-group {
+      margin-bottom: 20px;
+    }
+    .contact-form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    .contact-form-group label {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #123f2c;
+      margin-bottom: 8px;
+    }
+    .contact-form-group input,
+    .contact-form-group select,
+    .contact-form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 14.5px;
+      color: #1a202c;
+      border: 1.5px solid #dce0d9;
+      border-radius: 6px;
+      background: #fafbfa;
+      transition: border-color .2s, box-shadow .2s;
+      box-sizing: border-box;
+    }
+    .contact-form-group input:focus,
+    .contact-form-group select:focus,
+    .contact-form-group textarea:focus {
+      outline: none;
+      border-color: #08763f;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(8, 118, 63, 0.12);
+    }
+    .contact-captcha-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: #566555;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .contact-captcha-row input {
+      width: 80px;
+      padding: 8px 12px;
+      border: 1.5px solid #dce0d9;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .contact-submit-btn {
+      background: #f58220;
+      color: #ffffff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 99px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background .2s, transform .15s;
+    }
+    .contact-submit-btn:hover {
+      background: #df6f12;
+      transform: translateY(-1px);
+    }
+
+    .contact-success-msg {
+      display: none;
+      margin-top: 20px;
+      padding: 16px 20px;
+      border-radius: 6px;
+      background: #eef7f0;
+      border: 1px solid #c2e2c9;
+      color: #08763f;
+      font-weight: 600;
+      font-size: 14.5px;
+    }
+    .contact-success-msg.is-visible {
+      display: block;
+    }
+
+    /* Carte latérale d'informations et plan */
+    .contact-info-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .contact-info-box {
+      background: #ffffff;
+      border: 1px solid #dce0d9;
+      border-radius: 8px;
+      padding: 28px 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    .contact-info-box h4 {
+      font-size: 18px;
+      color: #123f2c;
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .contact-info-box p {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #566555;
+      margin: 0 0 12px;
+    }
+    .contact-info-box p strong {
+      color: #123f2c;
+    }
+    .contact-map-wrapper {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #dce0d9;
+    }
+    .contact-map-wrapper iframe {
+      display: block;
+      width: 100%;
+      height: 260px;
+      border: 0;
+    }
+
+    @media(max-width: 900px) {
+      .contact-split-section {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .contact-form-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-form-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body class="contact-standalone">
+
+  <!-- En-tête de navigation -->
+  <header class="contact-page-header" role="banner">
+    <div class="contact-page-header-inner">
+      <a aria-label="Sonje Ayiti, retour à l’accueil" class="contact-page-logo" href="index.html">
+        <img alt="Sonje Ayiti — Remember Haiti" height="42" src="assets/sonje-ayiti-logo-cropped-srgb.png"/>
+      </a>
+      <nav aria-label="Navigation principale" class="contact-page-nav">
+        <a class="btn-back-home" href="index.html"><span aria-hidden="true">←</span> Accueil</a>
+        <a href="album.html">Album photo</a>
+        <a href="blog.html">Blog &amp; Actualités</a>
+        <a href="index.html#programmes">Programmes</a>
+        <a href="index.html#parrainage">Parrainage</a>
+        <a class="btn-don" href="don.html">Faire un don ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Section principale au même style graphique que Album -->
+  <main class="photo-album contact-standalone-container" id="album">
+    <div class="album-inner">
+      <div class="album-heading">
+        <div>
+          <p class="album-eyebrow">CONTACTEZ SONJE AYITI</p>
+          <h2 id="album-title">Écrivez-nous.</h2>
+        </div>
+        <div>
+          <p>Vous souhaitez en savoir plus sur nos actions ou soutenir l’autonomie en Haïti ? Remplissez ce formulaire ou venez à notre rencontre.</p>
+          <a class="album-see-all" href="album.html">Découvrir l’album photo ↗</a>
+        </div>
+      </div>
+
+      <!-- 4 panneaux de contact reprenant exactement la grille album-categories-grid -->
+      <div class="album-categories-grid">
+
+        <!-- Panneau 01 : Bureau en Haïti -->
+        <article class="album-category-panel">
+          <div class="album-category-heading">
+            <span>01</span>
+            <h3>Bureau en Haïti</h3>
+          </div>
+          <div class="album-stage">
+            <figure class="album-slide">
+              <img alt="Siège et campus communautaire de Sonje Ayiti à Limonade en Haïti" loading="lazy" src="assets/hero-haiti.jpg"/>
+              <figcaption>
+                <h4>Campus de Limonade</h4>
+                <p>Route Nationale #6, En Face UEH (Campus Roi Henri Christophe), Limonade, Département du Nord, Haïti.</p>
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <!-- Panneau 02 : Antenne internationale USA -->
+        <article class="album-category-panel">
+          <div class="album-category-heading">
+            <span>02</span>
+            <h3>Bureau aux USA</h3>
+          </div>
+          <div class="album-stage">
+            <figure class="album-slide">
+              <img alt="Coordination des dons et partenariats internationaux" loading="lazy" src="assets/news-tech.jpg"/>
+              <figcaption>
+                <h4>Coordination internationale</h4>
+                <p>6086 Lakeview Park Drive, Linden, MI 48451, United States. Coordination des dons, des volontaires et partenaires.</p>
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <!-- Panneau 03 : Éducation & Parrainage -->
+        <article class="album-category-panel">
+          <div class="album-category-heading">
+            <span>03</span>
+            <h3>Parrainage &amp; Don</h3>
+          </div>
+          <div class="album-stage">
+            <figure class="album-slide">
+              <img alt="Étudiants universitaires haïtiens parrainés" loading="lazy" src="assets/sponsor-students-group.jpg"/>
+              <figcaption>
+                <h4>Soutenir un parcours</h4>
+                <p>Une question sur le parrainage d’un étudiant ou la fiscalité de vos dons ? Nous vous guidons pas à pas.</p>
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <!-- Panneau 04 : Communauté & Réseaux -->
+        <article class="album-category-panel">
+          <div class="album-category-heading">
+            <span>04</span>
+            <h3>Réseaux officiels</h3>
+          </div>
+          <div class="album-stage">
+            <figure class="album-slide">
+              <img alt="La force du collectif et de la communauté Sonje Ayiti" loading="lazy" src="assets/economie-cooperative.jpg"/>
+              <figcaption>
+                <h4>Rejoindre la communauté</h4>
+                <p>Retrouvez-nous sur notre page Facebook officielle <a href="https://www.facebook.com/SonjeAyitiOrg" rel="noopener" target="_blank" style="color:#08763f;font-weight:700;text-decoration:underline;">@SonjeAyitiOrg</a> pour suivre les nouvelles du terrain.</p>
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Section Formulaire & Carte -->
+      <div class="contact-split-section" id="formulaire">
+        <!-- Formulaire de contact -->
+        <section aria-labelledby="form-heading" class="contact-form-card">
+          <h3 id="form-heading">Formulaire de contact</h3>
+          <p class="form-lead">Laissez-nous votre message et notre équipe vous recontactera rapidement par email.</p>
+
+          <form action="https://sonje-ayiti.org/contact/" id="contact-form" method="post">
+            <div class="contact-form-grid">
+              <div class="contact-form-group">
+                <label for="first-name">Prénom *</label>
+                <input autocomplete="given-name" id="first-name" name="first_name" placeholder="Votre prénom" required="" type="text"/>
+              </div>
+              <div class="contact-form-group">
+                <label for="last-name">Nom *</label>
+                <input autocomplete="family-name" id="last-name" name="last_name" placeholder="Votre nom de famille" required="" type="text"/>
+              </div>
+            </div>
+
+            <div class="contact-form-group full-width">
+              <label for="email">Adresse email *</label>
+              <input autocomplete="email" id="email" name="email" placeholder="exemple@domaine.com" required="" type="email"/>
+            </div>
+
+            <div class="contact-form-group full-width">
+              <label for="subject">Je souhaite des informations sur :</label>
+              <select id="subject" name="interested_in">
+                <option value="Parrainage">Parrainer un étudiant universitaire</option>
+                <option value="Dons">Faire un don ou un legs</option>
+                <option value="Volontariat">Bénévolat / Volontariat en Haïti</option>
+                <option value="Partenariat">Partenariat institutionnel ou entreprise</option>
+                <option value="Education">Programme Éducation &amp; Bourses</option>
+                <option value="Sante">Programme Santé &amp; Cliniques mobiles</option>
+                <option value="Economie">Programme Développement économique</option>
+                <option value="Agriculture">Programme Agriculture &amp; Agroécologie</option>
+                <option value="Autre">Autre demande</option>
+              </select>
+            </div>
+
+            <div class="contact-form-group full-width">
+              <label for="message">Votre message *</label>
+              <textarea id="message" name="message" placeholder="Expliquez-nous votre projet, vos questions ou votre message de soutien…" required="" rows="5"></textarea>
+            </div>
+
+            <div class="contact-captcha-row">
+              <label for="captcha">Vérification de sécurité : 1 + 11 =</label>
+              <input id="captcha" name="captcha" placeholder="?" required="" type="text"/>
+            </div>
+
+            <button class="contact-submit-btn" type="submit">
+              <span>Envoyer mon message</span>
+              <span aria-hidden="true">→</span>
+            </button>
+
+            <div class="contact-success-msg" id="contact-success">
+              ✓ Merci pour votre message ! Notre équipe a bien reçu votre demande et vous répondra très prochainement.
+            </div>
+          </form>
+        </section>
+
+        <!-- Carte Google Maps & Infos pratiques -->
+        <aside class="contact-info-panel">
+          <div class="contact-info-box">
+            <h4>
+              <svg aria-hidden="true" fill="none" height="20" stroke="#08763f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Localisation du centre en Haïti
+            </h4>
+            <p><strong>Route Nationale #6, En Face UEH</strong><br/>Limonade, Département du Nord, Haïti</p>
+            <p>Coordonnées GPS : <strong>19°41'36.9"N 72°07'04.4"W</strong></p>
+            <div class="contact-map-wrapper">
+              <iframe allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15025.788330885041!2d-72.126633532803!3d19.69358098673655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3bb154e367af3175!2zMTnCsDQxJzM2LjkiTiA3MsKwMDcnMDQuNCJX!5e0!3m2!1sen!2sus!4v1662706913238!5m2!1sen!2sus" title="Carte d'accès Sonje Ayiti Limonade"></iframe>
+            </div>
+          </div>
+
+          <div class="contact-info-box">
+            <h4>
+              <svg aria-hidden="true" fill="none" height="20" stroke="#08763f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              Engagement de réponse
+            </h4>
+            <p>Nos équipes haïtiennes et internationales traitent chaque message avec la plus grande attention. Vous recevrez généralement un retour sous 48 heures ouvrées.</p>
+            <p style="margin-bottom:0;">Pour un besoin urgent lié à un don ou un parrainage en cours, vous pouvez également mentionner votre numéro de dossier dans le message.</p>
+          </div>
+        </aside>
+      </div>
+
+      <p class="album-illustration-note">Sonje Ayiti est une organisation à but non lucratif dédiée au développement durable et à l’autonomie des communautés en Haïti.</p>
+    </div>
+  </main>
+
+  <!-- Pied de page officiel -->
+  <footer class="plain-footer">
+    <div class="plain-footer-inner">
+      <div class="plain-footer-grid">
+        <div class="plain-footer-about">
+          <a aria-label="Sonje Ayiti, accueil" href="index.html">
+            <img alt="Sonje Ayiti — Remember Haiti" height="42" loading="lazy" src="assets/sonje-ayiti-logo-cropped-srgb.png" width="721"/>
+          </a>
+          <p>Sonje Ayiti réunit des humanitaires haïtiens et internationaux pour soutenir l’autonomie des communautés du Nord et du Nord-Est d’Haïti.</p>
+        </div>
+        <nav aria-label="Navigation">
+          <h2>L’organisation</h2>
+          <a href="index.html#apropos">À propos</a>
+          <a href="index.html#approche">Notre approche</a>
+          <a href="index.html#impact">Où nous agissons</a>
+          <a href="album.html">Album photo</a>
+        </nav>
+        <nav aria-label="Programmes">
+          <h2>Nos actions</h2>
+          <a href="index.html#programmes">Santé</a>
+          <a href="index.html#programmes">Développement économique</a>
+          <a href="index.html#programmes">Éducation</a>
+          <a href="index.html#programmes">Agriculture</a>
+        </nav>
+        <div class="plain-footer-contact">
+          <h2>Restons en contact</h2>
+          <p>Une question sur nos programmes ou les façons de nous soutenir ?</p>
+          <a class="plain-footer-email" href="contact.html">Écrivez-nous ↗</a>
+          <div class="plain-footer-support">
+            <a href="don.html">Faire un don</a>
+            <a href="index.html#parrainage">Parrainer un étudiant</a>
+          </div>
+        </div>
+      </div>
+      <div class="plain-footer-bottom">
+        <p>© 2026 Sonje Ayiti · Tous droits réservés.</p>
+        <div>
+          <a href="index.html">Accueil</a>
+          <a href="blog.html">Blog &amp; Actualités</a>
+          <a href="album.html">Album photo</a>
+          <a href="contact.html">Contact</a>
+          <a href="don.html">Dons</a>
+          <a href="#album">Haut de page ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Interaction dynamique du formulaire de contact
+    document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+      var captcha = document.getElementById('captcha')?.value?.trim();
+      if (captcha !== '12' && captcha !== 'douze') {
+        e.preventDefault();
+        alert('Veuillez entrer le résultat correct du calcul de sécurité (1 + 11 = 12).');
+        return;
+      }
+      // Affichage du message de confirmation immédiat pour l'expérience utilisateur
+      var successBox = document.getElementById('contact-success');
+      if (successBox) {
+        successBox.classList.add('is-visible');
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  </script>
+</body>
+</html>

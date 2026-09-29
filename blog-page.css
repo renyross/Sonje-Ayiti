@@ -1,0 +1,33 @@
+/* Identité et proportions de la page Album, adaptées aux articles. */
+body.blog-standalone { background: #f8faf9; }
+.blog-standalone #album .album-heading { margin-bottom: 36px; }
+.blog-standalone #album .album-heading h1 {
+  font-size: clamp(34px, 4.5vw, 54px); margin: 6px 0;
+  color: #123f2c; font-weight: 800; line-height: 1.2; letter-spacing: -.035em;
+}
+.blog-standalone #album .album-heading > div:last-child { max-width: 460px; }
+.blog-standalone #album .album-heading > div:last-child > p { color: #657263; font-size: 15px; line-height: 1.7; }
+.blog-standalone #album .album-categories-grid { align-items: stretch; row-gap: 42px; }
+.blog-standalone #album .album-category-panel { display: flex; flex-direction: column; }
+.blog-standalone #album .album-stage { flex: 1; display: flex; }
+.blog-standalone #album .album-slide { display: flex; flex-direction: column; width: 100%; }
+.blog-standalone #album .album-slide > img { height: auto; aspect-ratio: 4/3; object-fit: cover; border-radius: 5px; box-shadow: none; }
+.blog-standalone #album .album-slide figcaption { display: flex; flex-direction: column; flex: 1; gap: 0; min-height: 0; padding: 20px 0 0; }
+.blog-standalone #album .album-slide h4 { font-size: 19px; line-height: 1.35; margin: 0 0 10px; }
+.blog-standalone #album .album-slide figcaption p { color: #657263; font-size: 14px; line-height: 1.7; margin: 0 0 20px; }
+.blog-standalone .blog-card-action { margin-top: auto; gap: 12px; flex-wrap: wrap; padding-top: 16px; }
+.blog-standalone .blog-date-badge { font-size: 11px; font-weight: 500; }
+.blog-standalone .blog-open-btn { font-size: 12px; padding: 8px 0; font-weight: 700; }
+.blog-standalone a:focus-visible, .blog-standalone button:focus-visible { outline: 2px solid #08763f; outline-offset: 4px; }
+@media(max-width:850px){
+  .blog-page-header-inner { flex-wrap: wrap; gap: 18px; }
+  .blog-page-nav { flex-wrap: wrap; gap: 12px 18px; }
+  .blog-standalone-container { padding-top: 40px; }
+}
+@media(max-width:600px){
+  .blog-page-nav a { font-size: 12px; }
+  .blog-page-nav .btn-don { padding: 8px 12px; }
+  .blog-standalone .blog-modal { padding: 12px; }
+  .blog-standalone .blog-modal-content { padding: 24px 20px; }
+  .blog-standalone .blog-modal-img { height: 220px; }
+}
