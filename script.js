@@ -4,15 +4,31 @@ function closeMenu() {
   menu.setAttribute('aria-expanded', 'false');
   menu.setAttribute('aria-label', 'Ouvrir le menu de navigation');
   nav.classList.remove('open');
+  document.body.classList.remove('mobile-menu-open');
 }
 menu.addEventListener('click', () => {
   const open = menu.getAttribute('aria-expanded') !== 'true';
   menu.setAttribute('aria-expanded', String(open));
   menu.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu de navigation');
   nav.classList.toggle('open', open);
+  document.body.classList.toggle('mobile-menu-open', open);
+  if (open) {
+    closeSearch();
+    if (!nav.querySelector('.mobile-submenu[open]')) {
+      const firstSubmenu = nav.querySelector('.mobile-submenu');
+      if (firstSubmenu) firstSubmenu.open = true;
+    }
+  }
 });
 nav.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
-document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && nav.classList.contains('open')) { closeMenu(); menu.focus(); }
+});
+window.matchMedia('(max-width: 1000px)').addEventListener('change', closeMenu);
+const headerResizeObserver = new ResizeObserver(() => {
+  document.documentElement.style.setProperty('--mobile-header-height', `${document.querySelector('#site-header').getBoundingClientRect().height}px`);
+});
+headerResizeObserver.observe(document.querySelector('#site-header'));
 const dialog = document.querySelector('#info-dialog');
 function showInfo(title, text) {
   document.querySelector('#dialog-title').textContent = title;
@@ -29,7 +45,10 @@ document.querySelector('#privacy-button').addEventListener('click', () => showIn
 document.querySelector('#terms-button').addEventListener('click', () => showInfo('À propos de cette présentation', 'Cette présentation reprend les informations fournies sur Sonje Ayiti. Les photographies sont des illustrations et ne représentent pas ses projets. Les mentions légales de cette version devront être complétées avant sa publication.'));
 document.querySelector('#year').textContent = new Date().getFullYear();
 
-const dropdowns = [...document.querySelectorAll('.nav-dropdown')];
+const dropdowns = [...document.querySelectorAll('.nav-dropdown, .mobile-submenu, .desktop-blog-menu')];
+dropdowns.forEach(item => item.addEventListener('click', event => {
+  if (event.target.closest('a')) item.open = false;
+}));
 dropdowns.forEach(item => item.addEventListener('toggle', () => {
   if (item.open) dropdowns.forEach(other => { if (other !== item) other.open = false; });
 }));

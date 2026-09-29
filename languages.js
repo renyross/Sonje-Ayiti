@@ -2,7 +2,7 @@
 (() => {
   const entries = [
     ['Maison','Home','Inicio'],['À propos','About us','Quiénes somos'],['Programmes','Programs','Programas'],['Parrainer un étudiant','Sponsor a student','Apadrinar a un estudiante'],
-    ['Faire un don','Donate','Donar'],['Faites un don maintenant','Donate now','Dona ahora'],['FAITES UN DON MAINTENANT','DONATE NOW','DONA AHORA'],['Presse et actualités','Press and news','Prensa y noticias'],['Écrivez-nous','Contact us','Escríbenos'],['Nous contacter','Contact us','Contáctanos'],
+    ['Faire un don','Donate','Donar'],['Faites un don maintenant','Donate now','Dona ahora'],['FAITES UN DON MAINTENANT','DONATE NOW','DONA AHORA'],['Blog et actualités','Blog and news','Blog y noticias'],['Écrivez-nous','Contact us','Escríbenos'],['Nous contacter','Contact us','Contáctanos'],
     ['Découvrir nos actions','Explore our work','Descubre nuestras acciones'],['Soutenir Sonje Ayiti','Support Sonje Ayiti','Apoya a Sonje Ayiti'],['NOTRE CONVICTION','OUR BELIEF','NUESTRA CONVICCIÓN'],['Qu’est-ce que','What is','¿Qué es'],['Sonje Ayiti ?','Sonje Ayiti?','Sonje Ayiti?'],
     ['En savoir plus sur Sonje Ayiti','Learn more about Sonje Ayiti','Más información sobre Sonje Ayiti'],['NOS 4 DOMAINES D’INTERVENTION','OUR FOUR AREAS OF WORK','NUESTRAS CUATRO ÁREAS DE ACCIÓN'],['Quatre axes.','Four areas.','Cuatro áreas.'],['Une même ambition.','One shared ambition.','Una misma ambición.'],
     ['Santé','Health','Salud'],['Éducation','Education','Educación'],['Développement économique','Economic development','Desarrollo económico'],['Agriculture','Agriculture','Agricultura'],['Notre approche communautaire','Our community approach','Nuestro enfoque comunitario'],['Explorer nos programmes','Explore our programs','Explora nuestros programas'],
