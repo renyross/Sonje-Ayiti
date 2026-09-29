@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Blog & Actualités — Sonje Ayiti | Récits de terrain & Avancées</title>
+  <meta content="Découvrez les reportages de terrain, les avancées de nos programmes et les actualités officielles de l'organisation Sonje Ayiti en Haïti." name="description"/>
+  <link href="assets/sonje-ayiti-logo.jpg" rel="icon" type="image/jpeg"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="styles.css?v=20260929-blog" rel="stylesheet"/>
+  <style>
+    :root {
+      --blog-green: #0C502C;
+      --blog-green-deep: #072D19;
+      --blog-green-light: #EBF7EE;
+      --blog-gold: #F58220;
+      --blog-navy: #152238;
+      --blog-border: #E2E8F0;
+      --blog-text: #1C2430;
+      --blog-muted: #5E6977;
+    }
+
+    body.blog-page {
+      background: #F8FAF9;
+      color: var(--blog-text);
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    /* HEADER FIXE */
+    .blog-navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--blog-border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .blog-navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .blog-navbar-brand img {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+    .blog-navbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .blog-navbar-nav a {
+      text-decoration: none;
+      color: var(--blog-text);
+      font-weight: 600;
+      font-size: 14px;
+      transition: color .2s;
+    }
+    .blog-navbar-nav a:hover {
+      color: var(--blog-green);
+    }
+    .blog-navbar-nav .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 99px;
+      background: #EFF3F0;
+      color: var(--blog-green);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .blog-navbar-nav .btn-back:hover {
+      background: var(--blog-green-light);
+    }
+    .blog-navbar-nav .btn-donate {
+      background: var(--blog-gold);
+      color: #fff;
+      padding: 9px 20px;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 13px;
+      transition: all .2s;
+    }
+    .blog-navbar-nav .btn-donate:hover {
+      background: #DF6F12;
+      transform: translateY(-1px);
+    }
+
+    /* EN-TÊTE HERO */
+    .blog-hero {
+      background: linear-gradient(135deg, var(--blog-green-deep) 0%, #113824 60%, #152238 100%);
+      color: #FFFFFF;
+      padding: 70px 24px 60px;
+      text-align: center;
+      position: relative;
+    }
+    .blog-hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .blog-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 800;
+      color: #FFD494;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 14px;
+      border-radius: 99px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .blog-hero h1 {
+      font-size: clamp(34px, 5vw, 54px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1.2px;
+      margin: 0 0 16px;
+    }
+    .blog-hero h1 span {
+      color: #FFD494;
+    }
+    .blog-hero p {
+      font-size: clamp(16px, 2vw, 19px);
+      color: #E2ECE5;
+      line-height: 1.6;
+      max-width: 680px;
+      margin: 0 auto 30px;
+    }
+
+    /* BARRE D'ONGLETS THÉMATIQUES */
+    .blog-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .blog-filter-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .blog-filter-btn:hover, .blog-filter-btn.is-active {
+      background: #FFFFFF;
+      color: var(--blog-green-deep);
+      border-color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* CONTENEUR DU BLOG */
+    .blog-main {
+      max-width: 1240px;
+      margin: 50px auto 100px;
+      padding: 0 24px;
+    }
+
+    /* ARTICLE À LA UNE */
+    .blog-featured {
+      background: #FFFFFF;
+      border: 1px solid var(--blog-border);
+      border-radius: 24px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      margin-bottom: 50px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .blog-featured:hover {
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.09);
+    }
+    @media (max-width: 900px) {
+      .blog-featured {
+        grid-template-columns: 1fr;
+      }
+    }
+    .blog-featured-img-wrap {
+      position: relative;
+      min-height: 380px;
+      overflow: hidden;
+    }
+    .blog-featured-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 6s ease;
+    }
+    .blog-featured:hover .blog-featured-img-wrap img {
+      transform: scale(1.04);
+    }
+    .blog-featured-content {
+      padding: 44px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .blog-tag {
+      display: inline-block;
+      align-self: flex-start;
+      background: var(--blog-green-light);
+      color: var(--blog-green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 99px;
+      margin-bottom: 14px;
+    }
+    .blog-meta {
+      font-size: 13px;
+      color: var(--blog-muted);
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .blog-featured-content h2 {
+      font-size: clamp(24px, 2.5vw, 32px);
+      line-height: 1.25;
+      color: var(--blog-navy);
+      font-weight: 800;
+      margin: 0 0 16px;
+      letter-spacing: -0.5px;
+    }
+    .blog-featured-content p {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: #4A5568;
+      margin: 0 0 24px;
+    }
+    .btn-read-article {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blog-green);
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 99px;
+      font-size: 14px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: all .2s;
+    }
+    .btn-read-article:hover {
+      background: #083b20;
+      transform: translateY(-2px);
+    }
+
+    /* GRILLE D'ARTICLES */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    @media (max-width: 650px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .blog-card {
+      background: #FFFFFF;
+      border: 1px solid var(--blog-border);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+    .blog-card[hidden] {
+      display: none;
+    }
+    .blog-card-media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+    .blog-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 4s ease;
+    }
+    .blog-card:hover .blog-card-media img {
+      transform: scale(1.05);
+    }
+    .blog-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .blog-card-body h3 {
+      font-size: 19px;
+      line-height: 1.35;
+      font-weight: 800;
+      color: var(--blog-navy);
+      margin: 0 0 12px;
+      letter-spacing: -0.3px;
+    }
+    .blog-card-body p {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: #4A5568;
+      margin: 0 0 20px;
+      flex-grow: 1;
+    }
+    .blog-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #EDF2F7;
+      padding-top: 14px;
+      margin-top: auto;
+    }
+    .blog-card-date {
+      font-size: 12.5px;
+      color: var(--blog-muted);
+      font-weight: 600;
+    }
+    .blog-read-link {
+      color: var(--blog-green);
+      font-size: 13.5px;
+      font-weight: 800;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color .2s;
+    }
+    .blog-read-link:hover {
+      color: var(--blog-gold);
+    }
+
+    /* MODALE DE LECTURE D'ARTICLE */
+    .article-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(12, 28, 44, 0.7);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .article-modal.is-open {
+      display: flex;
+    }
+    .article-modal-card {
+      background: #FFFFFF;
+      max-width: 820px;
+      width: 100%;
+      max-height: 90vh;
+      border-radius: 22px;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      position: relative;
+      animation: modalFadeIn .25s ease-out;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-close-btn {
+      position: sticky;
+      top: 16px;
+      right: 16px;
+      float: right;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--blog-border);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 16px 16px 0 0;
+    }
+    .modal-hero-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+    .modal-article-body {
+      padding: 36px 44px 50px;
+    }
+    @media (max-width: 600px) {
+      .modal-article-body { padding: 24px; }
+      .modal-hero-img { height: 220px; }
+    }
+    .modal-article-body h2 {
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.25;
+      color: var(--blog-navy);
+      margin: 0 0 16px;
+      font-weight: 800;
+    }
+    .modal-article-body p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #2D3748;
+      margin-bottom: 20px;
+    }
+    .modal-article-quote {
+      border-left: 4px solid var(--blog-green);
+      padding: 14px 20px;
+      background: #F4F8F5;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: #1A3622;
+      margin: 24px 0;
+    }
+
+    /* BANNIÈRE NEWSLETTER */
+    .blog-cta-banner {
+      background: linear-gradient(135deg, #152238 0%, #0C502C 100%);
+      border-radius: 24px;
+      padding: 50px 40px;
+      color: #FFFFFF;
+      text-align: center;
+      margin-top: 70px;
+    }
+    .blog-cta-banner h2 {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 800;
+      margin: 0 0 14px;
+    }
+    .blog-cta-banner p {
+      color: #E2ECE5;
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }
+    .blog-cta-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .blog-cta-actions a {
+      text-decoration: none;
+      padding: 12px 26px;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all .2s;
+    }
+    .blog-cta-actions .btn-gold {
+      background: var(--blog-gold);
+      color: #fff;
+    }
+    .blog-cta-actions .btn-gold:hover {
+      background: #DF6F12;
+      transform: translateY(-2px);
+    }
+    .blog-cta-actions .btn-outline {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+    }
+    .blog-cta-actions .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  </style>
+</head>
+<body class="blog-page">
+
+  <!-- NAVBAR -->
+  <header class="blog-navbar" role="banner">
+    <a aria-label="Sonje Ayiti, retour à l'accueil" class="blog-navbar-brand" href="index.html">
+      <img alt="Sonje Ayiti" height="42" src="assets/sonje-ayiti-logo-cropped-srgb.png"/>
+    </a>
+    <nav aria-label="Navigation principale" class="blog-navbar-nav">
+      <a class="btn-back" href="index.html">
+        <span aria-hidden="true">←</span> Retour au site
+      </a>
+      <a href="album.html">Album photo</a>
+      <a href="index.html#programmes">Nos programmes</a>
+      <a href="index.html#parrainage">Parrainage</a>
+      <a class="btn-donate" href="don.html">Faire un don ↗</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="blog-hero" aria-labelledby="blog-hero-title">
+    <div class="blog-hero-inner">
+      <div class="blog-kicker">
+        <span aria-hidden="true">📰</span> REPORTAGES & AVANCÉES DU TERRAIN
+      </div>
+      <h1 id="blog-hero-title">Blog & <span>Actualités</span></h1>
+      <p>
+        Suivez les actions concrètes menées avec les communautés du Nord et du Nord-Est d’Haïti : éducation, soins de santé, épargne solidaire et projets agricoles durables.
+      </p>
+
+      <!-- FILTRE PAR THÉMATIQUE -->
+      <div class="blog-filter-bar" role="toolbar" aria-label="Filtrer les articles">
+        <button class="blog-filter-btn is-active" data-filter="all" type="button">Toutes les actualités</button>
+        <button class="blog-filter-btn" data-filter="education" type="button">🎓 Éducation</button>
+        <button class="blog-filter-btn" data-filter="sante" type="button">🩺 Santé</button>
+        <button class="blog-filter-btn" data-filter="economie" type="button">💼 Économie</button>
+        <button class="blog-filter-btn" data-filter="agriculture" type="button">🌾 Agriculture</button>
+        <button class="blog-filter-btn" data-filter="energie" type="button">⚡ Énergie solaire</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="blog-main" id="main-content">
+
+    <!-- ARTICLE À LA UNE -->
+    <article class="blog-featured" data-category="education">
+      <div class="blog-featured-img-wrap">
+        <img alt="Étudiants universitaires haïtiens collaborant lors d’une session d’étude sur le campus" src="assets/sponsor-students-group.jpg"/>
+      </div>
+      <div class="blog-featured-content">
+        <span class="blog-tag">À LA UNE · ÉDUCATION</span>
+        <div class="blog-meta">
+          <time datetime="2026-04-10">10 avril 2026</time>
+          <span>•</span>
+          <span>Lecture : 4 min</span>
+        </div>
+        <h2>L’éducation au cœur de la mission de Sonje Ayiti : 350 bourses scolaires et soutien aux cantines</h2>
+        <p>
+          Face aux défis du pays, Sonje Ayiti poursuit sans relâche son engagement pour la scolarisation des enfants et l'accompagnement des étudiants vers l’enseignement supérieur dans le Nord d’Haïti.
+        </p>
+        <button class="btn-read-article" data-article-id="article-1" type="button">
+          Lire le reportage complet <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </article>
+
+    <!-- GRILLE D'ARTICLES -->
+    <section class="blog-grid" aria-label="Liste des articles récents">
+
+      <!-- Article 2 : Énergie -->
+      <article class="blog-card" data-category="energie">
+        <div class="blog-card-media">
+          <img alt="Micro-centrales solaires en Haïti" loading="lazy" src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80"/>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Énergie & Santé</span>
+          <h3>Des fonds débloqués pour 12 nouvelles micro-centrales solaires</h3>
+          <p>Garantir l'électricité continue dans les dispensaires de santé ruraux et les centres de formation communautaires grâce à l'énergie solaire.</p>
+          <div class="blog-card-footer">
+            <time class="blog-card-date" datetime="2026-03-09">9 mars 2026</time>
+            <button class="blog-read-link" data-article-id="article-2" type="button">Lire l'article →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 3 : Numérique & Éducation -->
+      <article class="blog-card" data-category="education">
+        <div class="blog-card-media">
+          <img alt="Formation aux métiers du numérique et programmation en Haïti" loading="lazy" src="assets/news-tech.jpg"/>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Technologie & Jeunesse</span>
+          <h3>Des programmes de formation au numérique adaptés à la mise à l’échelle</h3>
+          <p>Former les jeunes haïtiens à la programmation, à la bureautique et aux compétences digitales pour leur ouvrir des opportunités d'emploi international.</p>
+          <div class="blog-card-footer">
+            <time class="blog-card-date" datetime="2026-02-17">17 février 2026</time>
+            <button class="blog-read-link" data-article-id="article-3" type="button">Lire l'article →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 4 : Économie solidaire -->
+      <article class="blog-card" data-category="economie">
+        <div class="blog-card-media">
+          <img alt="Femmes de l'Artibonite gérant leur coopérative d'épargne" loading="lazy" src="assets/economie-cooperative.jpg"/>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Économie Solidaire</span>
+          <h3>Comment l’épargne solidaire redéfinit l’autonomie des femmes dans l’Artibonite</h3>
+          <p>Plus de 450 femmes se regroupent en caisses d'épargne autogérées pour financer leurs activités commerciales et renforcer l'indépendance de leur foyer.</p>
+          <div class="blog-card-footer">
+            <time class="blog-card-date" datetime="2026-02-06">6 février 2026</time>
+            <button class="blog-read-link" data-article-id="article-4" type="button">Lire l'article →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 5 : Santé communautaire -->
+      <article class="blog-card" data-category="sante">
+        <div class="blog-card-media">
+          <img alt="Équipe de santé communautaire en consultation mobile" loading="lazy" src="assets/sante-mobile.jpg"/>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Santé de Proximité</span>
+          <h3>Campagnes de dépistage et soins de santé communautaire dans le Nord</h3>
+          <p>Nos équipes médicales mobiles se rendent dans les zones isolées pour prodiguer soins primaires, dépistages et conseils d’hygiène préventive.</p>
+          <div class="blog-card-footer">
+            <time class="blog-card-date" datetime="2026-01-24">24 janvier 2026</time>
+            <button class="blog-read-link" data-article-id="article-5" type="button">Lire l'article →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 6 : Agriculture -->
+      <article class="blog-card" data-category="agriculture">
+        <div class="blog-card-media">
+          <img alt="Konbit de récolte maraîchère en Haïti" loading="lazy" src="assets/agriculture-konbit.jpg"/>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Agriculture Vivrière</span>
+          <h3>Sécurité alimentaire : 15 micro-projets agricoles lancés à Bahon et Phaëton</h3>
+          <p>Distribution de semences maraîchères adaptées, formation à l'agroécologie et organisation de konbits communautaires pour des récoltes généreuses.</p>
+          <div class="blog-card-footer">
+            <time class="blog-card-date" datetime="2026-01-12">12 janvier 2026</time>
+            <button class="blog-read-link" data-article-id="article-6" type="button">Lire l'article →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 7 : Maternité & Famille -->
+      <article class="blog-card" data-category="sante">
+        <div class="blog-card-media">
+          <img alt="Sage-femme et jeune mère en clinique à Cap-Haïtien" loading="lazy" src="assets/sante-maternite.jpg"/>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Santé Maternelle</span>
+          <h3>Accompagner la vie : le rôle capital des sages-femmes communautaires</h3>
+          <p>Sécurité des accouchements, suivi post-natal et distribution de kits d'hygiène pour offrir aux nouveau-nés le meilleur départ possible dans la vie.</p>
+          <div class="blog-card-footer">
+            <time class="blog-card-date" datetime="2025-12-18">18 décembre 2025</time>
+            <button class="blog-read-link" data-article-id="article-7" type="button">Lire l'article →</button>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- BANNIÈRE APPEL À L'ACTION -->
+    <div class="blog-cta-banner">
+      <h2>Restez informé de nos actions sur le terrain</h2>
+      <p>
+        Chaque mois, nous publions des témoignages et des bilans concrets de nos actions en Haïti. Soutenez notre démarche participative pour l’autonomie.
+      </p>
+      <div class="blog-cta-actions">
+        <a class="btn-gold" href="don.html">Faire un don de solidarité ↗</a>
+        <a class="btn-outline" href="album.html">Voir l'album photos 📷</a>
+        <a class="btn-outline" href="index.html#newsletter">S'inscrire à la lettre d'information</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODALE DE LECTURE COMPLÈTE D'UN ARTICLE -->
+  <div class="article-modal" id="article-modal" role="dialog" aria-modal="true" aria-label="Lecture de l'article">
+    <div class="article-modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Fermer la fenêtre" type="button">✕</button>
+      <img class="modal-hero-img" id="modal-img" alt="" src=""/>
+      <div class="modal-article-body">
+        <span class="blog-tag" id="modal-tag">ACTUALITÉ</span>
+        <div class="blog-meta">
+          <time id="modal-date">Date</time>
+          <span>•</span>
+          <span>Sonje Ayiti Organisation</span>
+        </div>
+        <h2 id="modal-title">Titre de l'article</h2>
+        <div id="modal-text"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="plain-footer">
+    <div class="plain-footer-inner">
+      <div class="plain-footer-grid">
+        <div class="plain-footer-about">
+          <a aria-label="Sonje Ayiti, accueil" href="index.html">
+            <img alt="Sonje Ayiti" height="446" loading="lazy" src="assets/sonje-ayiti-logo-cropped-srgb.png" width="721"/>
+          </a>
+          <p>Sonje Ayiti réunit des humanitaires haïtiens et internationaux pour soutenir l’autonomie des communautés du Nord et du Nord-Est d’Haïti.</p>
+        </div>
+        <nav aria-label="Navigation">
+          <h2>L’organisation</h2>
+          <a href="index.html#apropos">À propos</a>
+          <a href="index.html#approche">Notre approche</a>
+          <a href="index.html#impact">Où nous agissons</a>
+          <a href="album.html">Album photo</a>
+        </nav>
+        <nav aria-label="Programmes">
+          <h2>Nos actions</h2>
+          <a href="index.html#programmes">Santé</a>
+          <a href="index.html#programmes">Développement économique</a>
+          <a href="index.html#programmes">Éducation</a>
+          <a href="index.html#programmes">Agriculture</a>
+        </nav>
+        <div class="plain-footer-contact">
+          <h2>Restons en contact</h2>
+          <p>Une question sur nos programmes ou les façons de nous soutenir ?</p>
+          <a class="plain-footer-email" href="https://sonje-ayiti.org/contact/">Écrivez-nous ↗</a>
+          <div class="plain-footer-support">
+            <a href="don.html">Faire un don</a>
+            <a href="index.html#parrainage">Parrainer un étudiant</a>
+          </div>
+        </div>
+      </div>
+      <div class="plain-footer-bottom">
+        <p>© 2026 Sonje Ayiti · Tous droits réservés.</p>
+        <div>
+          <a href="index.html">Accueil</a>
+          <a href="blog.html">Blog & Actualités</a>
+          <a href="album.html">Album photo</a>
+          <a href="don.html">Dons</a>
+          <a href="#main-content">Haut de page ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DONNÉES & LOGIQUE JAVASCRIPT DU BLOG -->
+  <script>
+    (() => {
+      // Données textuelles complètes des articles
+      const articlesData = {
+        'article-1': {
+          tag: 'ÉDUCATION · BOURSES SUPÉRIEURES',
+          date: '10 avril 2026',
+          title: 'L’éducation au cœur de la mission de Sonje Ayiti : 350 bourses scolaires et soutien aux cantines',
+          img: 'assets/sponsor-students-group.jpg',
+          content: `
+            <p>Dans un contexte national particulièrement exigeant, l'éducation demeure l'ancre et le levier le plus puissant pour l'avenir de la jeunesse haïtienne. Sonje Ayiti a consolidé cette année l'accompagnement de plus de 350 boursiers, depuis les bancs de l'école fondamentale jusqu'aux auditoires de l'Université d'État d'Haïti et des facultés spécialisées du Nord.</p>
+            <div class="modal-article-quote">
+              « Chaque bourse attribuée n'est pas simplement une aide financière : c'est un pacte de confiance et un investissement direct dans les futurs ingénieurs, médecins, agronomes et enseignants d'Haïti. »
+            </div>
+            <p>Parallèlement, le programme de cantines scolaires a permis d'assurer un repas nutritif quotidien aux écoliers des zones rurales de Bahon et de Limonade, favorisant l'assiduité scolaire et réduisant drastiquement le taux d'abandon.</p>
+            <p>Grâce au soutien des parrains et marraines internationaux, chaque jeune dispose des fournitures indispensables, de manuels scolaires et d'un encadrement pédagogique attentif dispensé par nos équipes sur place.</p>
+          `
+        },
+        'article-2': {
+          tag: 'ÉNERGIE & INFRASTRUCTURES',
+          date: '9 mars 2026',
+          title: 'Des fonds débloqués pour 12 nouvelles micro-centrales solaires dans les centres de santé',
+          img: 'https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80',
+          content: `
+            <p>Face aux pénuries chroniques de carburant qui paralysent l'alimentation des générateurs électriques en Haïti, la transition vers l'énergie solaire est devenue une priorité vitale. Sonje Ayiti a finalisé la commande et le plan d'installation de 12 nouvelles micro-centrales photovoltaïques.</p>
+            <p>Ces installations solaires autonomes équiperont en priorité :</p>
+            <ul>
+              <li>Les réfrigérateurs médicaux conservant les vaccins et médicaments thermosensibles,</li>
+              <li>Les salles d'accouchement et d'urgence pour assurer des soins nocturnes sécurisés,</li>
+              <li>Les centres d'apprentissage communautaires connectés.</li>
+            </ul>
+            <p>Ce programme assure une autonomie énergétique totale, propre et durable au service direct de la santé des populations.</p>
+          `
+        },
+        'article-3': {
+          tag: 'NUMÉRIQUE & COMPÉTENCES',
+          date: '17 février 2026',
+          title: 'Des programmes de formation au numérique adaptés à la mise à l’échelle',
+          img: 'assets/news-tech.jpg',
+          content: `
+            <p>Le numérique constitue une passerelle extraordinaire pour franchir les barrières géographiques et économiques. À Cap-Haïtien, les ateliers de l'Académie Technologique ont accueilli leur nouvelle promotion de 120 jeunes apprenants.</p>
+            <div class="modal-article-quote">
+              « Permettre à un jeune de maîtriser le développement web ou la gestion de données, c’est lui ouvrir un marché du travail international sans qu’il ait besoin de quitter sa communauté. »
+            </div>
+            <p>Le cursus intègre la programmation, l'analyse de données, la création graphique et les outils collaboratifs à distance. Plus de 65 % des diplômés des promotions précédentes exercent aujourd'hui une activité rémunératrice en télétravail ou dans des PME locales.</p>
+          `
+        },
+        'article-4': {
+          tag: 'ÉCONOMIE SOLIDAIRE & FEMMES',
+          date: '6 février 2026',
+          title: 'Comment l’épargne solidaire redéfinit l’autonomie des femmes dans l’Artibonite',
+          img: 'assets/economie-cooperative.jpg',
+          content: `
+            <p>Dans la vallée de l'Artibonite, les femmes constituent le pilier de l'économie familiale. Pourtant, l'accès au crédit bancaire traditionnel leur est presque totalement fermé. Pour surmonter cet obstacle, Sonje Ayiti soutient le modèle des banques villageoises d'épargne et de crédit mutuel.</p>
+            <p>Chaque semaine, les membres se réunissent pour cotiser, échanger et allouer de petits prêts à taux solidaire :</p>
+            <ul>
+              <li>Achat de stock pour le petit commerce de denrées alimentaires,</li>
+              <li>Achat de semences et d'outils maraîchers,</li>
+              <li>Paiement des frais de scolarité des enfants en début de trimestre.</li>
+            </ul>
+            <p>Le taux de remboursement atteint 99,2 %, prouvant l'efficacité remarquable de la solidarité communautaire et de la confiance mutuelle.</p>
+          `
+        },
+        'article-5': {
+          tag: 'SANTÉ DE PROXIMITÉ',
+          date: '24 janvier 2026',
+          title: 'Campagnes de dépistage et de soins de santé communautaire dans le Nord',
+          img: 'assets/sante-mobile.jpg',
+          content: `
+            <p>Les cliniques mobiles de Sonje Ayiti continuent de sillonner les chemins escarpés du Nord pour dispenser des soins de première nécessité aux familles vivant éloignées des hôpitaux urbains.</p>
+            <p>Durant ce dernier trimestre, les équipes médicales ont accompli :</p>
+            <ul>
+              <li>2 840 consultations médicales générales pour adultes et personnes âgées,</li>
+              <li>1 150 examens pédiatriques et bilans nutritionnels,</li>
+              <li>Des ateliers pratiques d'hygiène de l'eau et de prévention du choléra.</li>
+            </ul>
+            <p>Cette présence de terrain garantit une prise en charge précoce des pathologies courantes avant qu'elles ne deviennent critiques.</p>
+          `
+        },
+        'article-6': {
+          tag: 'AGRICULTURE & SOUVERAINETÉ',
+          date: '12 janvier 2026',
+          title: 'Sécurité alimentaire : 15 micro-projets agricoles lancés à Bahon et Phaëton',
+          img: 'assets/agriculture-konbit.jpg',
+          content: `
+            <p>L’agriculture est la mère nourricière d'Haïti. Afin de soutenir les producteurs face au coût exorbitant des engrais chimiques importés, Sonje Ayiti accompagne les groupements paysans dans la transition vers des pratiques agroécologiques locales.</p>
+            <p>Le projet fournit des semences paysannes de maïs, de haricots noirs, de patates douces et de choux, tout en réhabilitant des parcelles collectives selon la tradition ancestrale du « konbit » (travail collectif d'entraide solidaire).</p>
+            <p>Les premières récoltes alimentent directement les marchés des villages et renforcent l'autosuffisance alimentaire des foyers.</p>
+          `
+        },
+        'article-7': {
+          tag: 'SANTÉ MATERNELLE',
+          date: '18 décembre 2025',
+          title: 'Accompagner la vie : le rôle capital des sages-femmes communautaires',
+          img: 'assets/sante-maternite.jpg',
+          content: `
+            <p>La maternité en milieu rural nécessite une attention constante. Sonje Ayiti collabore étroitement avec des sages-femmes certifiées pour offrir un suivi rigoureux avant, pendant et après l'accouchement.</p>
+            <p>Grâce à la distribution de kits d'accouchement stériles et à des séances régulières d'éducation nutritionnelle pour les jeunes mères, les risques de complications sont considérablement réduits.</p>
+            <p>Ce travail de longue haleine sauvegarde des vies et redonne toute sa noblesse au parcours de la maternité en Haïti.</p>
+          `
+        }
+      };
+
+      // FILTRAGE DES ARTICLES PAR THÉMATIQUE
+      const filterBtns = document.querySelectorAll('.blog-filter-btn');
+      const cards = document.querySelectorAll('.blog-card');
+      const featured = document.querySelector('.blog-featured');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.filter;
+          filterBtns.forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+
+          cards.forEach(card => {
+            const cat = card.dataset.category;
+            card.hidden = filter !== 'all' && cat !== filter;
+          });
+
+          if (featured) {
+            featured.hidden = filter !== 'all' && featured.dataset.category !== filter;
+          }
+        });
+      });
+
+      // MODALE DE LECTURE D'ARTICLE
+      const modal = document.getElementById('article-modal');
+      const closeBtn = document.getElementById('modal-close-btn');
+      const modalImg = document.getElementById('modal-img');
+      const modalTag = document.getElementById('modal-tag');
+      const modalDate = document.getElementById('modal-date');
+      const modalTitle = document.getElementById('modal-title');
+      const modalText = document.getElementById('modal-text');
+
+      function openArticle(id) {
+        const data = articlesData[id];
+        if (!data || !modal) return;
+        modalImg.src = data.img;
+        modalTag.textContent = data.tag;
+        modalDate.textContent = data.date;
+        modalTitle.textContent = data.title;
+        modalText.innerHTML = data.content;
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeArticle() {
+        if (!modal) return;
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-article-id]').forEach(el => {
+        el.addEventListener('click', () => {
+          openArticle(el.dataset.articleId);
+        });
+      });
+
+      if (closeBtn) closeBtn.addEventListener('click', closeArticle);
+      if (modal) {
+        modal.addEventListener('click', e => {
+          if (e.target === modal) closeArticle();
+        });
+      }
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeArticle();
+      });
+    })();
+  </script>
+</body>
+</html>

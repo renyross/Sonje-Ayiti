@@ -4956,7 +4956,7 @@ body :is(.cinematic-kicker,.conviction-eyebrow,.sponsor-eyebrow,.territory-eyebr
     padding: 0; margin-bottom: 8px; overflow: hidden;
     border: 0; border-radius: 6px; background: #123f2c;
   }
-  .mobile-menu-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .mobile-menu-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
   .mobile-menu-photo::after {
     content: ''; position: absolute; inset: 0;
     background: linear-gradient(180deg, transparent 20%, rgba(10, 40, 27, .88));
@@ -5060,7 +5060,7 @@ body :is(.cinematic-kicker,.conviction-eyebrow,.sponsor-eyebrow,.territory-eyebr
   .site-header .mobile-submenu[open] > summary { border-color: transparent; color: #f58220; }
   .mobile-submenu-links { margin: -4px 8px 24px; padding: 20px; border-color: #e0e5da; border-radius: 8px; }
   .mobile-menu-photos { gap: 20px; }
-  .site-header .mobile-menu-photos a.mobile-menu-photo { aspect-ratio: 1.42; min-height: 0; }
+  .site-header .mobile-menu-photos a.mobile-menu-photo { width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; aspect-ratio: 1.42; min-height: 0; }
   .site-header .mobile-menu-photo .mobile-menu-photo-caption { font-size: clamp(13px, 2.4vw, 24px); }
   .mobile-menu-kicker { margin-top: 28px; padding-bottom: 24px; font-size: clamp(11px, 1.8vw, 17px); }
   .site-header .mobile-submenu-links > a { min-height: 58px; padding: 18px 4px; font-size: clamp(16px, 2.5vw, 24px); }
@@ -5113,3 +5113,189 @@ body :is(.cinematic-kicker,.conviction-eyebrow,.sponsor-eyebrow,.territory-eyebr
 .hero-quicklinks .desktop-blog-panel a:focus-visible { outline: 2px solid #ee941b; outline-offset: -4px; }
 .desktop-blog-panel a > span > span { display: none; }
 @media (max-width: 1000px) { .desktop-blog-menu { display: none; } }
+
+/* Les cartes restent dans leurs colonnes, même avec la hauteur minimale sur iPhone. */
+@media (max-width: 1000px) {
+  .mobile-navigation, .mobile-navigation-list, .mobile-submenu,
+  .mobile-submenu-links, .mobile-menu-photos { min-width: 0; }
+  .mobile-menu-photos { width: 100%; }
+  .site-header .mobile-menu-photo .mobile-menu-photo-caption {
+    min-width: 0; max-width: calc(100% - 24px); overflow-wrap: anywhere;
+  }
+}
+@media (max-width: 480px) {
+  .site-header .mobile-menu-photos a.mobile-menu-photo {
+    height: 170px; min-height: 0; aspect-ratio: auto;
+  }
+  .site-header .mobile-menu-photo .mobile-menu-photo-caption {
+    left: 9px; right: 9px; max-width: calc(100% - 18px);
+    display: flex; flex-direction: column; align-items: flex-start;
+    gap: 8px; font-size: 13px; line-height: 1.35;
+  }
+  .mobile-menu-photo-caption > span { align-self: flex-end; }
+}
+
+/* Album : photographie panoramique et légende éditoriale sous l’image. */
+#album.photo-album { padding: 72px 5%; background: #f3f0f8; }
+.album-inner { max-width: 1250px; margin: auto; min-width: 0; }
+.album-heading { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 30px; }
+.album-eyebrow, .album-theme { color: #08763f; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.album-heading h2 { color: #123f2c; font-size: clamp(38px, 5vw, 64px); line-height: 1.1; margin: 12px 0 0; }
+.album-heading > p { color: #657263; font-size: 16px; line-height: 1.7; margin: 0; }
+.album-slide { margin: 0; min-width: 0; }
+.album-slide[hidden], .album-controls[hidden] { display: none; }
+.album-slide > img { display: block; width: 100%; height: clamp(280px, 38vw, 480px); object-fit: cover; border-radius: 6px; }
+.album-slide figcaption { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; padding: 28px 0 24px; min-height: 168px; }
+.album-slide h3 { font-size: clamp(23px, 2.6vw, 34px); color: #123f2c; line-height: 1.25; margin: 10px 0 0; }
+.album-slide figcaption > p { margin: 26px 0 0; font-size: 16px; line-height: 1.8; color: #566555; }
+.album-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid #dce0d9; padding-top: 20px; }
+.album-bottom > p { font-size: 12px; color: #687466; margin: 0; }
+.album-controls { display: flex; align-items: center; gap: 18px; }
+#album-position { color: #566555; font-size: 14px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+#album-slides:focus-visible { outline: 2px solid #08763f; outline-offset: 6px; }
+@media(max-width:650px) {
+  #album.photo-album { padding: 44px 5%; }
+  .album-heading { display: block; }
+  .album-heading > p { margin-top: 18px; font-size: 14px; }
+  .album-slide > img { height: 280px; }
+  .album-slide figcaption { display: block; min-height: 220px; padding: 22px 0; }
+  .album-slide figcaption > p { margin-top: 14px; font-size: 15px; }
+  .album-bottom { flex-wrap: wrap; }
+  .album-controls { margin-left: auto; gap: 12px; }
+}
+
+/* Album d’accueil : carrousels multiples par catégorie */
+#album.photo-album { background: #f8faf9; padding: 70px 5%; }
+#album .album-inner { max-width: 1250px; margin: auto; min-width: 0; }
+#album .album-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+#album .album-heading h2 { font-size: clamp(34px, 4.5vw, 54px); margin: 6px 0; color: #123f2c; }
+#album .album-heading > p { color: #657263; font-size: 15.5px; line-height: 1.6; margin: 0; max-width: 460px; }
+.album-see-all { display: inline-flex; align-items: center; gap: 8px; color: #08763f; font-size: 14px; font-weight: 800; padding: 6px 0; text-decoration: none; border-bottom: 1.5px solid #08763f; transition: color .2s; }
+.album-see-all:hover { color: #f58220; border-color: #f58220; }
+
+/* Onglets de catégories */
+.album-category-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; border-bottom: 1.5px solid #dce2ed; padding-bottom: 16px; }
+.album-tab-btn { background: #ffffff; border: 1.5px solid #dce2ed; border-radius: 99px; padding: 10px 20px; font-size: 13.5px; font-weight: 700; color: #36466d; cursor: pointer; transition: all .2s; }
+.album-tab-btn:hover { background: #eef4f0; border-color: #08763f; color: #08763f; }
+.album-tab-btn.is-active { background: #08763f; color: #ffffff; border-color: #08763f; box-shadow: 0 4px 14px rgba(8, 118, 63, 0.28); }
+
+/* Panels de catégories & Carrousels */
+.album-category-panel { min-width: 0; }
+.album-category-panel[hidden] { display: none; }
+.album-slide { margin: 0; min-width: 0; }
+.album-slide[hidden] { display: none; }
+.album-slide > img { display: block; width: 100%; height: clamp(280px, 36vw, 480px); object-fit: cover; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+.album-slide figcaption { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: start; padding: 24px 0 20px; min-height: 120px; }
+.album-slide h3 { font-size: clamp(22px, 2.5vw, 32px); color: #123f2c; line-height: 1.25; margin: 8px 0 0; }
+.album-slide figcaption > p { margin: 20px 0 0; font-size: 15.5px; line-height: 1.7; color: #566555; }
+.album-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid #dce0d9; padding-top: 18px; margin-top: 10px; }
+.album-bottom > p { font-size: 13px; font-weight: 700; color: #687466; margin: 0; }
+.album-controls { display: flex; align-items: center; gap: 16px; }
+.album-position { color: #566555; font-size: 14px; font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
+@media(max-width:768px) {
+  #album.photo-album { padding: 44px 5%; }
+  #album .album-heading { display: block; }
+  #album .album-heading > p { margin-top: 14px; }
+  .album-see-all { margin-top: 10px; }
+  .album-slide > img { height: 260px; }
+  .album-slide figcaption { display: block; min-height: auto; padding: 18px 0; }
+  .album-slide figcaption > p { margin-top: 10px; font-size: 14.5px; }
+  .album-bottom { flex-wrap: wrap; }
+  .album-controls { margin-left: auto; gap: 10px; }
+}
+
+/* Quatre albums indépendants, visibles ensemble. */
+#album .album-categories-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 42px 32px; }
+#album .album-category-panel { min-width: 0; }
+#album .album-category-heading { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; }
+#album .album-category-heading > span { color: #08763f; font-size: 12px; font-weight: 700; }
+#album .album-category-heading h3 { margin: 0; color: #123f2c; font-size: clamp(21px,2.4vw,28px); }
+#album .album-slide > img { width: 100%; height: auto; aspect-ratio: 16/10; object-fit: cover; border-radius: 5px; box-shadow: none; }
+#album .album-slide figcaption { display: block; padding: 20px 0; min-height: 142px; }
+#album .album-slide h4 { color: #123f2c; font-size: 22px; line-height: 1.3; margin: 0 0 10px; }
+#album .album-slide figcaption p { font-size: 15px; line-height: 1.7; margin: 0; color: #657263; }
+#album .album-controls { justify-content: flex-end; padding-top: 16px; border-top: 1px solid #dce0d9; }
+#album .album-controls[hidden] { display: none; }
+#album .album-stage:focus-visible { outline: 2px solid #08763f; outline-offset: 5px; }
+.album-illustration-note { color: #687466; font-size: 12px; margin: 30px 0 0; }
+@media(max-width:700px){#album .album-categories-grid{grid-template-columns:1fr;gap:36px}#album .album-slide figcaption{min-height:145px}#album .album-heading{margin-bottom:30px}}
+
+/* Album : quatre catégories sur une ligne sur ordinateur. */
+@media (min-width: 1001px) {
+  #album .album-categories-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+  #album .album-category-heading { min-height: 56px; align-items: flex-start; gap: 9px; }
+  #album .album-category-heading h3 { font-size: 20px; line-height: 1.35; }
+  #album .album-category-heading > span { padding-top: 5px; }
+  #album .album-slide > img { aspect-ratio: 4 / 3; }
+  #album .album-slide figcaption { min-height: 215px; }
+  #album .album-slide h4 { font-size: 19px; }
+  #album .album-slide figcaption p { font-size: 14px; }
+  #album .album-controls { gap: 10px; justify-content: space-between; }
+  #album .album-controls button.carousel-arrow { width: 44px !important; height: 44px !important; min-width: 44px; }
+}
+
+/* Commandes discrètes superposées au bas des photos de l’album. */
+#album .album-stage { position: relative; --album-photo-ratio: 1.6; }
+#album .album-controls {
+  position: absolute; z-index: 2; top: 0; left: 0; right: 0;
+  aspect-ratio: var(--album-photo-ratio); padding: 10px; margin: 0;
+  display: flex; align-items: flex-end; justify-content: center; gap: 0;
+  border: 0; pointer-events: none;
+}
+#album .album-controls[hidden] { display: none; }
+#album .album-controls button.carousel-arrow {
+  pointer-events: auto; width: 44px !important; height: 36px !important;
+  min-width: 44px; border: 0 !important; border-radius: 4px 0 0 4px !important;
+  background: rgba(255,255,255,.9) !important; color: #123f2c !important;
+  box-shadow: none !important;
+}
+#album .album-controls button.album-next { border-radius: 0 4px 4px 0 !important; }
+#album .album-controls button.carousel-arrow svg { width: 20px; height: 20px; }
+#album .album-controls button.carousel-arrow:hover { background: #fff !important; }
+#album .album-controls button.carousel-arrow:focus-visible { outline: 2px solid #08763f; outline-offset: -3px; }
+#album .album-position {
+  display: flex; align-items: center; justify-content: center; height: 36px;
+  padding: 0 6px; background: rgba(255,255,255,.9); color: #123f2c;
+  font-size: 11px; font-weight: 600;
+}
+@media(min-width:1001px){#album .album-stage { --album-photo-ratio: 1.3333333333; }}
+
+/* Commandes révélées au survol ; toujours accessibles au clavier et au toucher. */
+@media (hover: hover) and (pointer: fine) {
+  #album .album-controls { opacity: 0; transition: opacity .18s ease; }
+  #album .album-controls button.carousel-arrow { pointer-events: none; }
+  #album .album-stage:hover .album-controls,
+  #album .album-stage:focus-within .album-controls { opacity: 1; }
+  #album .album-stage:hover .album-controls button.carousel-arrow,
+  #album .album-stage:focus-within .album-controls button.carousel-arrow { pointer-events: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #album .album-controls { transition: none; }
+}
+
+/* Programmes : quatre carrousels indépendants sur une ligne. */
+#programmes.programmes-catalogue { padding: 70px 5%; background: #f3f0f8; }
+.programmes-inner { max-width: 1250px; margin: auto; }
+.programmes-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 36px; }
+.programmes-heading h2 { font-size: clamp(30px,4vw,48px); color: #123f2c; line-height: 1.15; margin: 12px 0 0; }
+.programmes-heading > div > p:not(.album-eyebrow) { color: #657263; line-height: 1.8; font-size: 15px; }
+.programmes-heading a, .programme-more { color: #08763f; font-weight: 700; font-size: 13px; text-decoration: none; }
+.programmes-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 22px; }
+#programmes .album-category-heading { display: flex; align-items: baseline; gap: 8px; min-height: 65px; }
+#programmes .album-category-heading > span { display: none; }
+#programmes .album-category-heading h3 { color: #123f2c; font-size: 20px; line-height: 1.3; margin: 0 0 16px; }
+#programmes .album-stage { position: relative; min-width: 0; }
+#programmes .album-slide > img { height: auto; width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 5px; box-shadow: none; }
+#programmes .album-slide figcaption { display: block; min-height: 210px; padding: 20px 0; }
+#programmes .album-slide h4 { color: #123f2c; font-size: 19px; line-height: 1.3; margin: 0 0 10px; }
+#programmes .album-slide figcaption p { color: #657263; font-size: 14px; line-height: 1.7; margin: 0; }
+#programmes .album-controls { position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 4/3; display: flex; align-items: flex-end; justify-content: center; gap: 0; padding: 10px; margin: 0; pointer-events: none; }
+#programmes .album-controls[hidden] { display: none; }
+#programmes .album-controls button.carousel-arrow { pointer-events: auto; width: 44px !important; min-width: 44px; height: 36px !important; border: 0 !important; border-radius: 3px !important; background: #ffffffe6 !important; box-shadow: none !important; }
+#programmes .album-controls svg { width: 20px; height: 20px; }
+#programmes .album-position { height: 36px; display: flex; align-items: center; background: #ffffffe6; padding: 0 6px; font-size: 11px; }
+.programme-more { display: block; padding-top: 16px; border-top: 1px solid #dce0d9; }
+#programmes .album-stage:focus-visible { outline: 2px solid #08763f; outline-offset: 4px; }
+@media(hover:hover) and (pointer:fine){#programmes .album-controls{opacity:0}#programmes .album-controls button.carousel-arrow{pointer-events:none}#programmes .album-stage:hover .album-controls,#programmes .album-stage:focus-within .album-controls{opacity:1}#programmes .album-stage:hover .album-controls button,#programmes .album-stage:focus-within .album-controls button{pointer-events:auto}}
+@media(max-width:1000px){.programmes-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}}
+@media(max-width:600px){#programmes.programmes-catalogue{padding:44px 5%}.programmes-heading,.programmes-grid{grid-template-columns:1fr}.programmes-heading{gap:16px}#programmes .album-category-heading{min-height:0}#programmes .album-slide figcaption{min-height:150px}}
