@@ -2,7 +2,7 @@
 body.donation-page-body { background: #fbf8f2; color: #203b2b; }
 .don-page-layout { grid-template-columns: 50% 50%; background: #fbf8f2; align-items: start; }
 .don-visual-col { position: sticky; top: 0; height: 100svh; min-height: 620px; }
-.don-visual-img { filter: none; object-position: center top; }
+.don-visual-img { filter: none; object-position: center center; }
 .don-visual-col:hover .don-visual-img { transform: none; }
 .don-visual-gradient { background: linear-gradient(180deg,#0002,transparent 30%,transparent 80%,#0004); }
 .don-visual-header { padding: 38px; align-items: start; }

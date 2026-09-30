@@ -5349,3 +5349,20 @@ body :is(.cinematic-kicker,.conviction-eyebrow,.sponsor-eyebrow,.territory-eyebr
 #programmes .album-slide figcaption { gap: 0; }
 #programmes .album-slide h4 { margin-bottom: 2px; }
 #programmes .album-slide figcaption p { margin-top: 0; }
+
+/* Navigation manuelle des vidéos : aucune interruption automatique de lecture. */
+.organisation-video-controls { gap: 16px; }
+#organisation-video-position { font-size: 12px; color: #123f2c; text-align: center; font-weight: 600; }
+.organisation-video-controls button { font-size: 24px; }
+
+/* Partenaires : logos originaux sur fond blanc, sans déformation. */
+.home-partners { padding: 64px 5%; background: #fff; scroll-margin-top: 100px; }
+.home-partners-inner { max-width: 1250px; margin: auto; }
+.home-partners-heading { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 36px; }
+.home-partners-heading > div > p { color: #08763f; font-size: 11px; font-weight: 800; letter-spacing: .13em; margin: 0 0 12px; }
+.home-partners-heading h2 { color: #123f2c; font-size: clamp(30px,3.5vw,46px); line-height: 1.2; letter-spacing: -.03em; margin: 0; }
+.home-partners-heading > p { max-width: 410px; color: #657263; font-size: 15px; line-height: 1.8; margin: 0; }
+.home-partners-grid { list-style: none; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px 48px; padding: 0; margin: 0; }
+.home-partners-grid li { min-width: 0; min-height: 150px; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.home-partners-grid img { display: block; width: auto; height: auto; max-width: 100%; max-height: 125px; object-fit: contain; }
+@media(max-width:650px){.home-partners{padding:44px 5%}.home-partners-heading{display:block}.home-partners-heading>p{margin-top:16px}.home-partners-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.home-partners-grid li{min-height:110px;padding:12px}.home-partners-grid img{max-height:95px}}
