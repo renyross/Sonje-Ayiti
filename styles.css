@@ -5517,3 +5517,19 @@ body :is(.cinematic-kicker,.conviction-eyebrow,.sponsor-eyebrow,.territory-eyebr
     -webkit-mask-image: none;
   }
 }
+
+/* Partenaires : présentation éditoriale et mosaïque de logos. */
+.partners-editorial { background: #fff; padding: 80px 5%; border-top: 1px solid #e6ebe4; scroll-margin-top: 100px; }
+.partners-editorial-inner { max-width: 1250px; margin: auto; display: grid; grid-template-columns: .85fr 1.4fr; gap: 64px; align-items: center; }
+.partners-editorial-copy .partners-eyebrow { color: #08763f; font-size: 11px; font-weight: 800; letter-spacing: .13em; margin: 0 0 20px; }
+.partners-editorial-copy h2 { font-size: clamp(30px,3.1vw,44px); font-weight: 700; line-height: 1.2; letter-spacing: -.035em; color: #123f2c; margin: 0 0 24px; }
+.partners-editorial-copy h2 span { color: #08763f; }
+.partners-editorial-copy > p:not(.partners-eyebrow) { color: #657263; font-size: 15px; line-height: 1.85; max-width: 350px; margin: 0 0 28px; }
+.partners-editorial-copy > a { display: inline-flex; align-items: center; gap: 28px; color: #08763f; font-size: 14px; font-weight: 700; text-decoration: none; border-bottom: 1px solid #b9cdb9; padding-bottom: 10px; }
+.partners-editorial-copy > a:hover { border-color: #08763f; }
+.partners-logo-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); border-left: 1px solid #e8ece6; border-top: 1px solid #e8ece6; }
+.partners-logo-grid > li { list-style: none; min-width: 0; height: 154px; padding: 24px; display: flex; align-items: center; justify-content: center; background: #fff; border-right: 1px solid #e8ece6; border-bottom: 1px solid #e8ece6; }
+.partners-logo-grid > li::before,.partners-logo-grid > li::after { content: none; }
+.partners-logo-grid img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100px; object-fit: contain; filter: none; opacity: 1; }
+@media(max-width:950px){.partners-editorial-inner{grid-template-columns:1fr;gap:32px}.partners-editorial-copy h2 br{display:none}.partners-editorial-copy h2 br::after{content:' '}.partners-editorial-copy > p:not(.partners-eyebrow){max-width:600px}}
+@media(max-width:550px){.partners-editorial{padding:44px 5%}.partners-logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.partners-logo-grid>li{height:126px;padding:20px}.partners-logo-grid img{max-height:84px}}

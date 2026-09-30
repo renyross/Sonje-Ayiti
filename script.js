@@ -25,25 +25,33 @@ document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && nav.classList.contains('open')) { closeMenu(); menu.focus(); }
 });
 window.matchMedia('(max-width: 1000px)').addEventListener('change', closeMenu);
-const headerResizeObserver = new ResizeObserver(() => {
-  document.documentElement.style.setProperty('--mobile-header-height', `${document.querySelector('#site-header').getBoundingClientRect().height}px`);
-});
-headerResizeObserver.observe(document.querySelector('#site-header'));
+if (document.querySelector('#site-header')) {
+  const headerResizeObserver = new ResizeObserver(() => {
+    document.documentElement.style.setProperty('--mobile-header-height', `${document.querySelector('#site-header').getBoundingClientRect().height}px`);
+  });
+  headerResizeObserver.observe(document.querySelector('#site-header'));
+}
 const dialog = document.querySelector('#info-dialog');
 function showInfo(title, text) {
-  document.querySelector('#dialog-title').textContent = title;
-  document.querySelector('#dialog-text').textContent = text;
+  if (!dialog) return;
+  const titleEl = document.querySelector('#dialog-title');
+  const textEl = document.querySelector('#dialog-text');
+  if (titleEl) titleEl.textContent = title;
+  if (textEl) textEl.textContent = text;
   dialog.showModal();
 }
-document.querySelector('.close-dialog').addEventListener('click', () => dialog.close());
-document.querySelector('#dialog-cancel').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', event => {
-  const rect = dialog.getBoundingClientRect();
-  if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
-});
-document.querySelector('#privacy-button').addEventListener('click', () => showInfo('Confidentialité', 'Cette page ne collecte pas de données via un formulaire. Les liens de don, de parrainage et de contact ouvrent le site officiel sonje-ayiti.org, dont les conditions s’appliquent. Les images et polices sont chargées depuis Unsplash et Google Fonts. Le lecteur vidéo intégré est fourni par YouTube via youtube-nocookie.com ; son utilisation peut transmettre des informations techniques à YouTube.'));
-document.querySelector('#terms-button').addEventListener('click', () => showInfo('À propos de cette présentation', 'Cette présentation reprend les informations fournies sur Sonje Ayiti. Les photographies sont des illustrations et ne représentent pas ses projets. Les mentions légales de cette version devront être complétées avant sa publication.'));
-document.querySelector('#year').textContent = new Date().getFullYear();
+document.querySelector('.close-dialog')?.addEventListener('click', () => dialog?.close());
+document.querySelector('#dialog-cancel')?.addEventListener('click', () => dialog?.close());
+if (dialog) {
+  dialog.addEventListener('click', event => {
+    const rect = dialog.getBoundingClientRect();
+    if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+  });
+}
+document.querySelector('#privacy-button')?.addEventListener('click', () => showInfo('Confidentialité', 'Cette page ne collecte pas de données personnelles sensibles sans votre consentement. Les liens de don, de parrainage et de contact permettent d’accompagner directement les programmes de Sonje Ayiti.'));
+document.querySelector('#terms-button')?.addEventListener('click', () => showInfo('Mentions légales', 'Sonje Ayiti réunit des humanitaires haïtiens et internationaux pour soutenir l’autonomie durable des communautés du Nord et du Nord-Est d’Haïti.'));
+const yearEl = document.querySelector('#year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 const dropdowns = [...document.querySelectorAll('.nav-dropdown, .mobile-submenu, .desktop-blog-menu')];
 dropdowns.forEach(item => item.addEventListener('click', event => {
@@ -56,7 +64,25 @@ const searchToggle = document.querySelector('.nav-search-toggle');
 const searchPanel = document.querySelector('#site-search');
 const searchInput = document.querySelector('#site-search-input');
 const searchResults = document.querySelector('#site-search-results');
-const sections = [ ['À propos de Sonje Ayiti', '#apropos'], ['Domaines d’intervention (Éducation, Économie, Santé, Agriculture)', '#programmes'], ['Éducation & Parrainage', '#parrainage'], ['Développement économique & Formation', '#card-economie'], ['Agriculture & Souveraineté', '#card-agriculture'], ['Zones d’intervention', '#impact'], ['Mesure & Impact en chiffres', '#mesure-impact'], ['Notre approche participative', '#approche'], ['Parrainer un étudiant', '#parrainage'], ['Faire un don — PayPal et Venmo', '#don'], ['Dernières nouvelles & actualités', '#actualites'], ['Restons connectés — Newsletter', '#newsletter'], ['Contact et questions', '#contact'] ];
+const sections = [
+  ['Accueil (Page principale)', 'index.html'],
+  ['À propos de Sonje Ayiti', 'qui-sommes-nous.html'],
+  ['Qui sommes-nous ? (Histoire & Équipe)', 'qui-sommes-nous.html'],
+  ['Notre démarche participative', 'index.html#approche'],
+  ['Nos programmes & 4 domaines d’intervention', 'programmes.html'],
+  ['Éducation & Parrainage scolaire', 'parrainage.html'],
+  ['Développement économique & Chimen Lavi Miyo', 'programmes.html#economie'],
+  ['Santé communautaire & Prévention', 'programmes.html#sante'],
+  ['Agriculture & Sécurité alimentaire', 'programmes.html#agriculture'],
+  ['Zones d’intervention (Nord & Nord-Est)', 'index.html#impact'],
+  ['Mesure de l’impact & Chiffres clés', 'index.html#mesure-impact'],
+  ['Parrainer un étudiant (Cima School of Hope)', 'parrainage.html'],
+  ['Faire un don (Zeffy, PayPal, Venmo)', 'don.html'],
+  ['Blog & Actualités du terrain', 'blog.html'],
+  ['Album photographique', 'album.html'],
+  ['Partenaires & Alliances', 'index.html#partenaires'],
+  ['Contact & Écrivez-nous', 'contact.html']
+];
 const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 function updateSearch() {
   const query = normalize(searchInput.value.trim());

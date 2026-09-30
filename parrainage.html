@@ -11,24 +11,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="parrainage.css?v=students-team-style">
   <script src="parrainage.js" defer></script>
+  <link href="styles.css" rel="stylesheet"/>
+  <script defer src="script.js"></script>
+  <script defer src="languages.js"></script>
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
   
-  <header class="page-header">
-    <div>
-      <a href="index.html" aria-label="Sonje Ayiti, accueil">
-        <img src="assets/sonje-ayiti-logo-cropped-srgb.png" alt="Sonje Ayiti — Remember Haiti" width="85" height="52">
-      </a>
-      <nav aria-label="Navigation principale">
-        <a href="index.html">← Accueil</a>
-        <a href="album.html">Album</a>
-        <a href="blog.html">Blog et actualités</a>
-        <a href="parrainage.html" aria-current="page">Parrainage</a>
-        <a class="nav-don" href="don.html">Faire un don ↗</a>
-      </nav>
-    </div>
-  </header>
+  <!-- En-tête principal & Navigation -->
+<header class="site-header" id="site-header">
+<div class="header-container">
+<!-- Identité visuelle / Logo sur fond blanc -->
+<a aria-label="Sonje Ayiti, accueil" class="brand" href="index.html" onclick="window.location.href='index.html'; window.location.reload(); return false;"><img alt="Sonje Ayiti — Remember Haiti" class="official-logo" decoding="async" height="446" src="assets/sonje-ayiti-logo-cropped-srgb.png" width="721"/></a>
+<!-- Bouton Menu Mobile (Hamburger accessible) -->
+<button aria-controls="navigation" aria-expanded="false" aria-label="Ouvrir le menu de navigation" class="menu-toggle" id="menu-toggle">
+<span class="bar bar-1"></span>
+<span class="bar bar-2"></span>
+<span class="bar bar-3"></span>
+</button>
+<!-- Navigation Principale -->
+<nav aria-label="Navigation principale" class="site-nav" id="navigation">
+<ul class="nav-list main-nav-clean"><li><a class="nav-link-direct" href="index.html" onclick="window.location.href='index.html'; window.location.reload(); return false;" title="Rafraîchir la page d’accueil">Accueil</a></li><li><details class="nav-dropdown minimal-dropdown"><summary aria-controls="minimal-menu-1">À propos<span aria-hidden="true" class="nav-chevron"></span></summary><div class="minimal-menu" id="minimal-menu-1"><a class="minimal-menu-feature" href="qui-sommes-nous.html"><img alt="" loading="lazy" src="assets/sonje-equipe-fondatrice.jpg"/><span>Qui sommes-nous ?<span aria-hidden="true">→</span></span></a><a class="minimal-menu-feature" href="#approche"><img alt="" loading="lazy" src="assets/hero-haiti.jpg"/><span>Notre approche<span aria-hidden="true">→</span></span></a><div class="minimal-menu-links"><h3>L’ORGANISATION</h3><a href="#apropos">Notre conviction<span aria-hidden="true">↗</span></a><a href="#approche">Notre méthode<span aria-hidden="true">↗</span></a><a href="#impact">Zones d’intervention<span aria-hidden="true">↗</span></a><a href="contact.html">Nous contacter<span aria-hidden="true">↗</span></a></div></div></details></li><li><details class="nav-dropdown minimal-dropdown"><summary aria-controls="minimal-menu-2">Programmes<span aria-hidden="true" class="nav-chevron"></span></summary><div class="minimal-menu" id="minimal-menu-2"><a class="minimal-menu-feature" href="programmes.html"><img alt="" loading="lazy" src="assets/hero-haiti.jpg"/><span>Nos quatre axes<span aria-hidden="true">→</span></span></a><a class="minimal-menu-feature" href="#mesure-impact"><img alt="" loading="lazy" src="assets/hero-education.jpg"/><span>Notre impact<span aria-hidden="true">→</span></span></a><div class="minimal-menu-links"><h3>NOS ACTIONS</h3><a href="programmes.html">Tous nos programmes<span aria-hidden="true">↗</span></a><a href="#impact">Où nous agissons<span aria-hidden="true">↗</span></a><a href="#mesure-impact">Impact en chiffres<span aria-hidden="true">↗</span></a><a href="#don">Soutenir nos actions<span aria-hidden="true">↗</span></a></div></div></details></li><li><details class="nav-dropdown minimal-dropdown"><summary aria-controls="minimal-menu-3">Parrainer un étudiant<span aria-hidden="true" class="nav-chevron"></span></summary><div class="minimal-menu" id="minimal-menu-3"><a class="minimal-menu-feature" href="parrainage.html"><img alt="" loading="lazy" src="assets/hero-education.jpg"/><span>Le parrainage<span aria-hidden="true">→</span></span></a><a class="minimal-menu-feature" href="#apropos"><img alt="" loading="lazy" src="assets/hero-haiti.jpg"/><span>Un engagement commun<span aria-hidden="true">→</span></span></a><div class="minimal-menu-links"><h3>SOUTENIR L’ÉDUCATION</h3><a href="parrainage.html">Découvrir le parrainage<span aria-hidden="true">↗</span></a><a href="parrainage.html">Étudiants à parrainer<span aria-hidden="true">↗</span></a><a href="#don">Faire un don<span aria-hidden="true">↗</span></a><a href="contact.html">Écrivez-nous<span aria-hidden="true">↗</span></a></div></div></details></li></ul>
+
+<div class="mobile-navigation"><ul class="mobile-navigation-list">
+<li><a class="mobile-nav-direct-reload" href="index.html" onclick="window.location.href='index.html'; window.location.reload(); return false;">Accueil<span aria-hidden="true">↻</span></a></li>
+<li><details class="mobile-submenu"><summary>À propos de nous<span aria-hidden="true" class="mobile-submenu-chevron"></span></summary><div class="mobile-submenu-links"><div class="mobile-menu-photos"><a class="mobile-menu-photo" href="qui-sommes-nous.html"><img alt="" decoding="async" height="360" loading="lazy" src="assets/sonje-equipe-fondatrice.jpg" width="640"/><span class="mobile-menu-photo-caption">Qui sommes-nous ?<span aria-hidden="true">→</span></span></a><a class="mobile-menu-photo" href="#approche"><img alt="" decoding="async" height="360" loading="lazy" src="assets/axis-agriculture.jpg" width="640"/><span class="mobile-menu-photo-caption">Notre approche<span aria-hidden="true">→</span></span></a></div><a href="qui-sommes-nous.html">Qui sommes-nous ?<span aria-hidden="true">↗</span></a><p class="mobile-menu-kicker">L’organisation</p><a href="#apropos">Notre conviction<span aria-hidden="true">↗</span></a><a href="#approche">Notre méthode<span aria-hidden="true">↗</span></a></div></details></li>
+<li><details class="mobile-submenu"><summary>Blog et actualités<span aria-hidden="true" class="mobile-submenu-chevron"></span></summary><div class="mobile-submenu-links"><div class="mobile-menu-photos"><a class="mobile-menu-photo" href="#actualites"><img alt="" decoding="async" height="360" loading="lazy" src="assets/sponsor-students-group.jpg" width="640"/><span class="mobile-menu-photo-caption">Actualités<span aria-hidden="true">→</span></span></a><a class="mobile-menu-photo" href="album.html"><img alt="" decoding="async" height="360" loading="lazy" src="assets/hero-haiti.jpg" width="640"/><span class="mobile-menu-photo-caption">Album<span aria-hidden="true">→</span></span></a></div><p class="mobile-menu-kicker">Blog et actualités</p><a href="#actualites">Actualités<span aria-hidden="true">↗</span></a><a href="album.html">Album<span aria-hidden="true">↗</span></a></div></details></li>
+<li><details class="mobile-submenu"><summary>Notre approche<span aria-hidden="true" class="mobile-submenu-chevron"></span></summary><div class="mobile-submenu-links"><div class="mobile-menu-photos"><a class="mobile-menu-photo" href="#approche"><img alt="" decoding="async" height="360" loading="lazy" src="assets/axis-agriculture.jpg" width="640"/><span class="mobile-menu-photo-caption">Faire ensemble<span aria-hidden="true">→</span></span></a><a class="mobile-menu-photo" href="#impact"><img alt="" decoding="async" height="360" loading="lazy" src="assets/hero-haiti.jpg" width="640"/><span class="mobile-menu-photo-caption">Nos zones d’action<span aria-hidden="true">→</span></span></a></div><p class="mobile-menu-kicker">Notre démarche</p><a href="#approche">Notre démarche participative<span aria-hidden="true">↗</span></a><a href="#impact">Nos zones d’action<span aria-hidden="true">↗</span></a></div></details></li>
+<li><details class="mobile-submenu"><summary>Nos programmes<span aria-hidden="true" class="mobile-submenu-chevron"></span></summary><div class="mobile-submenu-links"><div class="mobile-menu-photos"><a class="mobile-menu-photo" href="programmes.html"><img alt="" decoding="async" height="360" loading="lazy" src="assets/axis-education.jpg" width="640"/><span class="mobile-menu-photo-caption">Nos quatre axes<span aria-hidden="true">→</span></span></a><a class="mobile-menu-photo" href="#mesure-impact"><img alt="" decoding="async" height="360" loading="lazy" src="assets/axis-sante.jpg" width="640"/><span class="mobile-menu-photo-caption">Notre impact<span aria-hidden="true">→</span></span></a></div><p class="mobile-menu-kicker">Nos actions</p><a href="programmes.html">Nos quatre domaines d’intervention<span aria-hidden="true">↗</span></a><a href="programmes.html">Explorer les programmes<span aria-hidden="true">↗</span></a></div></details></li>
+<li><details class="mobile-submenu"><summary>Nos zones d’intervention<span aria-hidden="true" class="mobile-submenu-chevron"></span></summary><div class="mobile-submenu-links"><div class="mobile-menu-photos"><a class="mobile-menu-photo" href="#impact"><img alt="" decoding="async" height="360" loading="lazy" src="assets/hero-haiti.jpg" width="640"/><span class="mobile-menu-photo-caption">Le Grand Nord<span aria-hidden="true">→</span></span></a><a class="mobile-menu-photo" href="#don"><img alt="" decoding="async" height="360" loading="lazy" src="assets/axis-agriculture.jpg" width="640"/><span class="mobile-menu-photo-caption">Soutenir nos actions<span aria-hidden="true">→</span></span></a></div><p class="mobile-menu-kicker">Notre présence</p><a href="#impact">Nord et Nord-Est d’Haïti<span aria-hidden="true">↗</span></a><a href="#don">Soutenir nos zones d’action<span aria-hidden="true">↗</span></a></div></details></li>
+<li><details class="mobile-submenu"><summary>Notre impact<span aria-hidden="true" class="mobile-submenu-chevron"></span></summary><div class="mobile-submenu-links"><div class="mobile-menu-photos"><a class="mobile-menu-photo" href="#mesure-impact"><img alt="" decoding="async" height="360" loading="lazy" src="assets/axis-economie.jpg" width="640"/><span class="mobile-menu-photo-caption">Notre impact<span aria-hidden="true">→</span></span></a><a class="mobile-menu-photo" href="programmes.html"><img alt="" decoding="async" height="360" loading="lazy" src="assets/axis-education.jpg" width="640"/><span class="mobile-menu-photo-caption">Nos programmes<span aria-hidden="true">→</span></span></a></div><p class="mobile-menu-kicker">Une ambition commune</p><a href="#mesure-impact">Notre impact en chiffres<span aria-hidden="true">↗</span></a><a href="qui-sommes-nous.html">En savoir plus<span aria-hidden="true">↗</span></a></div></details></li>
+<li><details class="mobile-submenu"><summary>Parrainer un étudiant<span aria-hidden="true" class="mobile-submenu-chevron"></span></summary><div class="mobile-submenu-links"><div class="mobile-menu-photos"><a class="mobile-menu-photo" href="parrainage.html"><img alt="" decoding="async" height="360" loading="lazy" src="assets/sponsor-student-woman.jpg" width="640"/><span class="mobile-menu-photo-caption">Le parrainage<span aria-hidden="true">→</span></span></a><a class="mobile-menu-photo" href="parrainage.html"><img alt="" decoding="async" height="360" loading="lazy" src="assets/sponsor-student-man.jpg" width="640"/><span class="mobile-menu-photo-caption">Les étudiants<span aria-hidden="true">→</span></span></a></div><p class="mobile-menu-kicker">Soutenir l’éducation</p><a href="parrainage.html">Découvrir le parrainage<span aria-hidden="true">↗</span></a><a href="parrainage.html">Étudiants à parrainer<span aria-hidden="true">↗</span></a><a href="contact.html">Contacter l’équipe<span aria-hidden="true">↗</span></a></div></details></li>
+<li><a href="contact.html">Contact<span aria-hidden="true">↗</span></a></li>
+</ul><a class="mobile-navigation-donate" href="don.html">Faites un don maintenant</a></div>
+</nav>
+<!-- Bouton d'action Don En-tête -->
+<div class="nav-tools"><button aria-controls="site-search" aria-expanded="false" aria-label="Rechercher dans le site" class="nav-search-toggle"><svg aria-hidden="true" fill="none" height="25" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="25"><circle cx="10.5" cy="10.5" r="7.5"></circle><path d="m16 16 5 5"></path></svg></button><label class="nav-language language-switch"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24" width="22"><circle cx="12" cy="12" r="9"></circle><ellipse cx="12" cy="12" rx="4" ry="9"></ellipse><path d="M3 12h18"></path></svg><select aria-label="Langue / Language / Idioma" id="site-language"><option value="fr">FR</option><option value="en">EN</option><option value="es">ES</option></select></label></div></div>
+<div class="site-search" hidden="" id="site-search"><label for="site-search-input">Rechercher une rubrique</label><input autocomplete="off" id="site-search-input" placeholder="Éducation, don, parrainage…" type="search"/><ul aria-label="Résultats de recherche" id="site-search-results"></ul><p id="search-status" role="status"></p></div></header>
 
   <main id="contenu">
     <!-- SECTION INTRO -->
@@ -231,9 +250,22 @@
     </section>
   </main>
 
-  <footer class="wrap">
-    <a href="index.html">Sonje Ayiti — Souvenez-vous d’Haïti</a>
-    <a href="contact.html">Nous contacter ↗</a>
-  </footer>
+  <!-- PIED DE PAGE DU SITE (Design d'Excellence — Charte Graphique Sonje Ayiti) -->
+<footer class="plain-footer" id="pied-de-page"><div class="plain-footer-inner"><div class="plain-footer-grid"><div class="plain-footer-about"><a aria-label="Sonje Ayiti, accueil" href="#site-header"><img alt="Sonje Ayiti — Remember Haiti" height="446" loading="lazy" src="assets/sonje-ayiti-logo-cropped-srgb.png" width="721"/></a><p>Sonje Ayiti réunit des humanitaires haïtiens et internationaux pour soutenir l’autonomie des communautés du Nord et du Nord-Est d’Haïti.</p></div><nav aria-label="L’organisation"><h2>L’organisation</h2><a href="#apropos">À propos</a><a href="#approche">Notre approche</a><a href="#impact">Où nous agissons</a><a href="#actualites">Actualités</a></nav><nav aria-label="Nos actions"><h2>Nos actions</h2><a href="programmes.html#sante">Santé</a><a href="programmes.html#economie">Développement économique</a><a href="programmes.html#education">Éducation</a><a href="programmes.html#agriculture">Agriculture</a></nav><div class="plain-footer-contact" id="contact"><h2>Restons en contact</h2><p>Une question sur nos programmes ou les façons de nous soutenir ?</p><a class="plain-footer-email" href="contact.html">Écrivez-nous</a><div class="plain-footer-support"><a href="don.html">Faire un don</a><a href="parrainage.html">Parrainer un étudiant</a></div></div></div><div class="plain-footer-bottom"><p>© <span id="year">2026</span> Sonje Ayiti</p><div><button id="privacy-button" type="button">Confidentialité</button><button id="terms-button" type="button">Mentions légales</button><a href="#site-header">Retour en haut ↑</a></div></div><p class="plain-footer-note">Photographies officielles du terrain et des programmes de Sonje Ayiti Organization.</p></div></footer>
+<!-- MODALE NATIVE ACCESSIBLE (Programme, Don, Mentions) -->
+<dialog aria-describedby="dialog-text" aria-labelledby="dialog-title" class="custom-dialog" id="info-dialog">
+<div class="dialog-inner">
+<button aria-label="Fermer la boîte de dialogue" class="close-dialog" id="close-dialog">✕</button>
+<div class="dialog-eyebrow" id="dialog-eyebrow">SONJE AYITI · ACTION COMMUNAUTAIRE</div>
+<h2 class="dialog-heading" id="dialog-title">Titre de la fenêtre</h2>
+<div class="dialog-body-text" id="dialog-text">
+        Contenu détaillé de la présentation.
+      </div>
+<!-- Bloc interactif Don si sélectionné -->
+<div class="dialog-actions">
+<button class="btn btn-secondary" id="dialog-cancel">Fermer</button>
+</div>
+</div>
+</dialog>
 </body>
 </html>
