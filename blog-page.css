@@ -1,11 +1,11 @@
 /* Identité et proportions de la page Album, adaptées aux articles. */
 body.blog-standalone { background: #f8faf9; }
-.blog-standalone #album .album-heading { margin-bottom: 36px; }
+.blog-standalone #album .album-heading { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 36px; }
 .blog-standalone #album .album-heading h1 {
   font-size: clamp(34px, 4.5vw, 54px); margin: 6px 0;
   color: #123f2c; font-weight: 800; line-height: 1.2; letter-spacing: -.035em;
 }
-.blog-standalone #album .album-heading > div:last-child { max-width: 460px; }
+.blog-standalone #album .album-heading > div:last-child { max-width: 700px; }
 .blog-standalone #album .album-heading > div:last-child > p { color: #657263; font-size: 15px; line-height: 1.7; }
 .blog-standalone #album .album-categories-grid { align-items: stretch; row-gap: 42px; }
 .blog-standalone #album .album-category-panel { display: flex; flex-direction: column; }

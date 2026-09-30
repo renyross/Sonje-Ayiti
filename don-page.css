@@ -1,0 +1,36 @@
+/* Composition plein écran : portrait à gauche et parcours de don à droite. */
+body.donation-page-body { background: #fbf8f2; color: #203b2b; }
+.don-page-layout { grid-template-columns: 50% 50%; background: #fbf8f2; align-items: start; }
+.don-visual-col { position: sticky; top: 0; height: 100svh; min-height: 620px; }
+.don-visual-img { filter: none; object-position: center top; }
+.don-visual-col:hover .don-visual-img { transform: none; }
+.don-visual-gradient { background: linear-gradient(180deg,#0002,transparent 30%,transparent 80%,#0004); }
+.don-visual-header { padding: 38px; align-items: start; }
+.don-logo-badge { background: #ffffffed; border-radius: 0; padding: 10px 14px; box-shadow: none; }
+.don-logo-badge img { height: 64px; }
+.don-visual-header .don-back-link { display: none; }
+.don-photo-note { position: absolute; bottom: 20px; left: 26px; color: white; font-size: 11px; }
+.don-form-col { width: 100%; max-width: none; padding: 38px clamp(30px,4.3vw,88px) 64px; background: #fbf8f2; }
+.don-top-nav { margin-bottom: 60px; }
+.don-trust-pill { display: none; }
+.don-title-area h1 { color: #203b2b; font-size: clamp(40px,4.5vw,76px); line-height: 1.12; letter-spacing: -.04em; margin-bottom: 28px; }
+.don-title-area > p { display: none; }
+.don-pill-toggle { width: min(100%,460px); border: 1px solid #c5d4c1; border-radius: 50px; background: transparent; padding: 0; display: flex; margin: 0 0 36px; }
+.don-pill-btn { flex: 1; border-radius: 50px; padding: 18px; color: #203b2b; background: transparent; font-size: 18px; }
+.don-pill-btn.active { background: #075d2a; color: white; box-shadow: none; }
+.don-location-notice { padding: 0; border: 0; background: none; margin: 0 0 34px; color: #405443; font-size: 15px; line-height: 1.8; }
+.don-form-col > section, .don-field-group { background: white; padding: 24px; margin: 0 0 18px; border: 0; border-radius: 0; box-shadow: none; }
+.don-section-label { color: #075d2a; font-size: 22px; padding-bottom: 12px; border-bottom: 1px solid #73976b; gap: 12px; flex-wrap: wrap; }
+.don-amount-grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 8px; }
+.don-amt-btn { min-width: 0; min-height: 74px; padding: 10px 4px; background: #dcebcf; color: #203b2b; border: 1px solid #c6d6c0; border-radius: 5px; font-size: 20px; box-shadow: none; }
+.don-amt-btn.active { background: #075d2a; color: #fff; border-color: #075d2a; }
+.don-amt-btn.other-btn { font-size: 13px; }
+.don-impact-callout { background: transparent; padding: 14px 0 0; border: 0; margin-top: 10px; }
+.don-impact-icon { display: none; }
+.don-impact-text { font-size: 13px; color: #657263; }
+.don-proc-card { box-shadow: none; }
+.don-main-cta { background: #075d2a; border-radius: 5px; box-shadow: none; }
+.don-trust-footer { color: #657263; font-size: 12px; display: block; }
+.don-trust-footer a { color: #08763f; }
+@media(max-width:900px){.don-page-layout{grid-template-columns:50% 50%}.don-form-col{padding:26px}.don-visual-header{padding:20px}.don-logo-badge img{height:44px}.don-amount-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.don-top-nav{margin-bottom:36px}}
+@media(max-width:650px){.don-page-layout{display:block}.don-visual-col{position:relative;height:280px;min-height:0}.don-visual-img{object-position:center 35%}.don-form-col{padding:26px 5% 40px}.don-title-area h1{font-size:42px}.don-form-col > section,.don-field-group{padding:18px}.don-top-nav{margin-bottom:24px}.don-processor-cards{grid-template-columns:1fr}.don-pill-btn{padding:14px}.don-section-label{font-size:19px}.don-amount-grid .other-btn{grid-column:auto}}

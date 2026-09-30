@@ -36,7 +36,7 @@
 
     .don-page-layout {
       display: grid;
-      grid-template-columns: 46% 54%;
+      grid-template-columns: 50% 50%;
       min-height: 100vh;
       background: #FFFFFF;
     }
@@ -713,6 +713,7 @@
       }
     }
   </style>
+<link rel="stylesheet" href="don-page.css?v=split-layout"/>
 </head>
 <body class="donation-page-body">
 
@@ -721,9 +722,9 @@
   <!-- COLONNE GAUCHE : PHOTO REPORTAGE HUMAINE DIGNITÉ EN HAÏTI -->
   <aside aria-label="Témoignage et bénéficiaires de Sonje Ayiti" class="don-visual-col">
     <img 
-      alt="Mère et enfant souriants dans le Nord d’Haïti — Bénéficiaires des programmes Sonje Ayiti" 
+      alt="Écolière haïtienne souriante avec ses livres scolaires — photographie d’illustration" 
       class="don-visual-img" 
-      src="assets/donation-haiti-portrait.jpg"
+      src="assets/ecoliere-haiti.jpg"
     />
     <div class="don-visual-gradient"></div>
 
@@ -736,26 +737,7 @@
       </a>
     </div>
 
-    <div class="don-visual-footer">
-      <span class="don-visual-tag">VOTRE IMPACT EN HAÏTI</span>
-      <h2 class="don-visual-quote">
-        « Chaque don donne à nos enfants et à nos mères les moyens d’apprendre, de se soigner et de vivre dans la dignité. »
-      </h2>
-      <div class="don-visual-stats">
-        <div class="don-stat-item">
-          <strong>100 %</strong>
-          <span>Dédié au terrain</span>
-        </div>
-        <div class="don-stat-item">
-          <strong>350+</strong>
-          <span>Bourses attribuées</span>
-        </div>
-        <div class="don-stat-item">
-          <strong>6 zones</strong>
-          <span>Nord &amp; Nord-Est</span>
-        </div>
-      </div>
-    </div>
+    <p class="don-photo-note">Photographie d’illustration.</p>
   </aside>
 
   <!-- COLONNE DROITE : FORMULAIRE DE DON (STYLE FARM AFRICA) -->
@@ -768,25 +750,23 @@
       </a>
       <span class="don-trust-pill">
         <svg aria-hidden="true" fill="none" height="15" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="15"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Don 100 % Sécurisé
+        Soutenir Sonje Ayiti
       </span>
     </header>
 
     <div class="don-title-area">
-      <h1>Faire un don</h1>
+      <h1>Faites un don</h1>
       <p>Rejoignez ceux qui construisent l’autonomie durable des communautés haïtiennes.</p>
     </div>
 
     <!-- SÉLECTEUR FRÉQUENCE : DON PONCTUEL / MENSUEL -->
     <div aria-label="Fréquence du don" class="don-pill-toggle" role="tablist">
-      <button aria-selected="true" class="don-pill-btn active" id="btn-freq-once" role="tab" type="button">Don unique</button>
-      <button aria-selected="false" class="don-pill-btn" id="btn-freq-monthly" role="tab" type="button">Don mensuel</button>
+      <button aria-selected="true" class="don-pill-btn active" id="btn-freq-once" role="tab" type="button">Une fois</button>
+      <button aria-selected="false" class="don-pill-btn" id="btn-freq-monthly" role="tab" type="button">Mensuel</button>
     </div>
 
     <!-- NOTE DE CONTEXTE PAIEMENT -->
-    <div class="don-location-notice">
-      <strong>Donateurs internationaux :</strong> Vous pouvez soutenir Sonje Ayiti depuis les <strong>États-Unis</strong>, le <strong>Canada</strong>, l’<strong>Europe</strong> ou <strong>Haïti</strong> avec nos 3 processeurs certifiés ci-dessous.
-    </div>
+    <div class="don-location-notice">Votre soutien accompagne l’éducation, la santé, le développement économique et l’agriculture en Haïti.</div>
 
     <!-- SECTION MONTANT DU DON -->
     <section aria-labelledby="don-amount-heading">
@@ -895,35 +875,7 @@
     </section>
 
     <!-- SECTION DÉCLARATION & REÇU FISCAL (STYLE GIFT AID FARM AFRICA) -->
-    <section class="don-gift-aid-box">
-      <div class="don-gift-aid-title">Déduction fiscale &amp; Attestation de don</div>
-      <p class="don-gift-aid-desc">
-        Sonje Ayiti est une organisation à but non lucratif 501(c)(3) et association humanitaire reconnue. Vos dons sont éligibles aux réductions d'impôts selon la législation de votre pays de résidence fiscale.
-      </p>
-
-      <label class="don-radio-option">
-        <input checked name="gift-aid-choice" type="radio" value="yes"/>
-        <span><strong>Oui</strong>, je souhaite recevoir un reçu fiscal officiel par email pour ma déduction fiscale.</span>
-      </label>
-
-      <label class="don-radio-option">
-        <input name="gift-aid-choice" type="radio" value="no"/>
-        <span>Non, je ne demande pas de reçu fiscal pour le moment.</span>
-      </label>
-
-      <!-- COORDONNÉES DU DONATEUR (POUR LE REÇU) -->
-      <div class="don-donor-fields" id="donor-info-fields">
-        <div>
-          <input aria-label="Votre prénom" class="don-input-styled" id="donor-firstname" placeholder="Votre prénom" type="text"/>
-        </div>
-        <div>
-          <input aria-label="Votre nom" class="don-input-styled" id="donor-lastname" placeholder="Votre nom de famille" type="text"/>
-        </div>
-        <div class="full-width">
-          <input aria-label="Votre adresse email" class="don-input-styled" id="donor-email" placeholder="Votre adresse email (pour recevoir le reçu)" type="email"/>
-        </div>
-      </div>
-    </section>
+    <section class="don-gift-aid-box"><h2 class="don-gift-aid-title">Finaliser votre don</h2><p class="don-gift-aid-desc">Vous serez redirigé vers la plateforme choisie. Le montant, la devise, la fréquence et l’affectation sont à confirmer sur cette plateforme ; ces choix ne sont pas transmis automatiquement. Vos coordonnées et les informations de paiement y seront renseignées directement.</p></section>
 
     <!-- BOUTON D'ACTION PRINCIPAL DIRECTEUR -->
     <div class="don-cta-wrap">
@@ -940,20 +892,7 @@
     </div>
 
     <!-- RÉASSURANCE & LABELS DE CONFIANCE -->
-    <footer class="don-trust-footer">
-      <div class="don-trust-item">
-        <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16"><rect height="11" rx="2" ry="2" width="18" x="3" y="11"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Paiement chiffré SSL 256 bits
-      </div>
-      <div class="don-trust-item">
-        <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
-        Transparence financière
-      </div>
-      <div class="don-trust-item">
-        <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Reçu fiscal par email
-      </div>
-    </footer>
+    <footer class="don-trust-footer">Une question ? <a href="contact.html">Contactez l’équipe Sonje Ayiti ↗</a></footer>
 
   </main>
 
@@ -967,13 +906,7 @@
     let currentCurrency = '$';
     let currentProcessor = 'zeffy';
 
-    const impactMessages = {
-      25: "Avec <strong>25 {curr}</strong>, vous fournissez les cahiers, stylos et manuels scolaires indispensables à un enfant pour toute l'année.",
-      50: "Avec <strong>50 {curr}</strong>, vous financez la cantine scolaire quotidienne et les consultations médicales de base pour un enfant.",
-      100: "Avec <strong>100 {curr}</strong>, vous offrez une bourse d'études complète avec uniforme et accompagnement pédagogique pendant un trimestre.",
-      250: "Avec <strong>250 {curr}</strong>, vous financez le micro-capital d'amorçage pour permettre à une mère de famille de lancer une activité autonome pérenne.",
-      custom: "Chaque don, quel que soit son montant, permet de renforcer concrètement l'autonomie et l'avenir des communautés haïtiennes."
-    };
+    const impactMessages = { custom: 'Merci de soutenir l’autonomie des communautés haïtiennes.' };
 
     const processorLinks = {
       zeffy: "https://www.zeffy.com/en-US/donation-form/sponsor-a-student-and-change-a-life",
@@ -1011,7 +944,7 @@
 
       // Met à jour le texte du bouton CTA
       const freqText = currentFrequency === 'monthly' ? ' PAR MOIS' : '';
-      submitLabel.textContent = `JE FAIS UN DON DE ${currentAmount} ${currentCurrency}${freqText}`;
+      submitLabel.textContent = `CONTINUER AVEC ${currentProcessor.toUpperCase()}`;
 
       // Met à jour le lien de destination
       submitBtn.href = processorLinks[currentProcessor] || processorLinks.zeffy;
@@ -1075,6 +1008,10 @@
       updateForm();
     });
 
+    // Accès clavier aux moyens de paiement.
+    processorCards.forEach(card => card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); card.click(); }
+    }));
     // Choix du Processeur de Paiement
     processorCards.forEach(card => {
       card.addEventListener('click', () => {

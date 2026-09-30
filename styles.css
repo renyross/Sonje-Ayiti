@@ -4751,8 +4751,9 @@ body{background:var(--section-white)}
 .axis-body{border-top:0!important}
 
 /* Navigation minimaliste : visuels compacts et liens essentiels. */
-.site-header .minimal-dropdown{position:static}
-.site-header .minimal-dropdown>summary{font-family:var(--font-heading);text-transform:none;font-size:13px;letter-spacing:0;font-weight:700;min-height:68px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#233c30}
+.site-header .minimal-dropdown>summary,
+.site-header .nav-link-direct{font-family:var(--font-heading);text-transform:none;font-size:13px;letter-spacing:0;font-weight:700;min-height:68px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;color:#233c30;text-decoration:none;transition:color .2s ease}
+.site-header .nav-link-direct:hover{color:#08763f}
 .minimal-menu{position:absolute;top:100%;left:0;right:0;padding:24px max(5%,calc((100vw - 1320px)/2));display:grid;grid-template-columns:1fr 1fr .9fr;gap:25px;background:#fff;border-top:1px solid #e6e9e1;box-shadow:0 15px 25px #123f2c12;max-height:calc(100svh - 90px);overflow:auto;z-index:110}
 .minimal-dropdown:not([open])>.minimal-menu{display:none}
 .minimal-menu-feature{position:relative;height:200px;overflow:hidden;border-radius:4px;background:#123f2c;display:block;color:white;text-decoration:none}
@@ -5064,7 +5065,9 @@ body :is(.cinematic-kicker,.conviction-eyebrow,.sponsor-eyebrow,.territory-eyebr
   .site-header .mobile-menu-photo .mobile-menu-photo-caption { font-size: clamp(13px, 2.4vw, 24px); }
   .mobile-menu-kicker { margin-top: 28px; padding-bottom: 24px; font-size: clamp(11px, 1.8vw, 17px); }
   .site-header .mobile-submenu-links > a { min-height: 58px; padding: 18px 4px; font-size: clamp(16px, 2.5vw, 24px); }
-  .site-header .mobile-navigation-list > li > a { padding: 18px 23px; color: #394779 !important; text-transform: none; font-weight: 600; }
+  .site-header .mobile-navigation-list > li > a { padding: 18px 23px; color: #394779 !important; text-transform: none; font-weight: 600; display: flex; align-items: center; justify-content: space-between; font-size: clamp(17px, 2.8vw, 26px); text-decoration: none; }
+  .site-header .mobile-navigation-list > li > a:hover { color: #f58220 !important; }
+  .site-header .mobile-nav-direct-reload span { color: #08763f; font-size: 24px; font-weight: bold; }
 }
 @media (max-width: 480px) {
   .site-header .header-container { gap: 10px; }
