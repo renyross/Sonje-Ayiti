@@ -28,3 +28,28 @@
  .student h3 { font-size: 34px; }
  .student h4 { font-size: 16px; }
 }
+
+/* Même esprit que la galerie de l’équipe : portraits, noms et histoires dépliables. */
+.students-section { background: #fff; }
+.students-section .section-heading { display: grid; grid-template-columns: 1.2fr 1fr; max-width: none; gap: 60px; align-items: end; }
+.students-section .section-heading h2 { margin-bottom: 0; }
+.students-section .section-heading > p { max-width: 420px; }
+.students-grid { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 28px; align-items: start; }
+.student { background: transparent; border-radius: 0; overflow: visible; }
+.student-photo-box { height: auto; aspect-ratio: 4/5; border-radius: 5px; background: #f3f0f8; overflow: hidden; }
+.student-photo { object-fit: cover; object-position: center 20%; }
+.student-top { padding: 20px 0 0; font-size: 9px; letter-spacing: .05em; gap: 8px; }
+.student-top > span:first-child { display: none; }
+.student-info { padding: 10px 0 0; }
+.student h3 { font-size: 30px; margin-bottom: 10px; }
+.student h4 { min-height: 72px; font-size: 14px; line-height: 1.65; font-weight: 500; color: #657263; margin-bottom: 18px; }
+.student-story { border-top: 1px solid #dce0d9; margin-bottom: 14px; }
+.student-story summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding: 12px 0; cursor: pointer; list-style: none; font-size: 12px; font-weight: 600; color: #08763f; }
+.student-story summary::-webkit-details-marker { display: none; }
+.student-story summary > span { font-size: 23px; font-weight: 400; line-height: 1; }
+.student-story[open] summary > span { transform: rotate(45deg); }
+.student-story summary:focus-visible { outline: 2px solid #08763f; outline-offset: 3px; }
+.student-story p { font-size: 13px; line-height: 1.85; margin-bottom: 14px; }
+.student .student-cta { font-size: 12px; padding: 12px; min-height: 46px; }
+@media(max-width:1000px){.students-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.students-section .section-heading{gap:28px}.student h4{min-height:48px}}
+@media(max-width:600px){.students-section .section-heading{grid-template-columns:1fr;gap:18px}.students-grid{grid-template-columns:1fr;gap:34px}.student-photo-box{aspect-ratio:4/4.5;max-height:430px}.student h4{min-height:0}.student .student-cta{font-size:14px}.student-story summary{font-size:13px}}
